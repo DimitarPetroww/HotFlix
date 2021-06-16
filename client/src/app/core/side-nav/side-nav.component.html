@@ -1,0 +1,17 @@
+<mat-nav-list>
+    <a mat-list-item routerLink="/" (click)="onSidenavClose()">
+        <mat-icon>local_movies</mat-icon> <span class="nav-caption">BROWSE</span>
+    </a>
+    <a mat-list-item routerLink="/user/register" (click)="onSidenavClose()">
+        <mat-icon>lock</mat-icon><span class="nav-caption" >REGISTER</span>
+    </a>
+    <a mat-list-item routerLink="/user/login" (click)="onSidenavClose()">
+        <mat-icon>lock_open</mat-icon><span class="nav-caption">LOGIN</span>
+    </a>
+    <a mat-list-item routerLink="/user/profile" (click)="onSidenavClose()">
+        <mat-icon>face</mat-icon><span class="nav-caption">PROFILE</span>
+    </a>
+    <a mat-list-item routerLink="/user/logout" (click)="onSidenavClose()">
+        <mat-icon>exit_to_app</mat-icon><span class="nav-caption">SIGN OUT</span>
+    </a>
+</mat-nav-list>

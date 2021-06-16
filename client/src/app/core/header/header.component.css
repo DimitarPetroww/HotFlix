@@ -1,0 +1,23 @@
+a {
+    text-decoration: none;
+    color: white;
+}
+a:hover, a:active{
+    color:  #f60;
+}
+.navigation-items{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.toggle {
+    color: #f60 !important;
+}
+mat-toolbar{
+    background-color: #29282E;
+}
+@media(max-width: 959px){
+    mat-toolbar{
+        border-radius: 0px;
+    }
+}

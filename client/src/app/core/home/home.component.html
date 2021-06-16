@@ -1,0 +1,43 @@
+<!-- <mat-toolbar color="primary">
+    MOVIES
+</mat-toolbar> -->
+<div class="content">
+    <div fxLayout="row wrap" fxLayoutGap="16px grid">
+        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let movie of movies">
+            <mat-card class="mat-elevation-z4">
+                <mat-card-header>
+                    <mat-card-title>{{movie.title}}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image
+                    [src]="movie.imageUrl">
+                <mat-card-subtitle>
+                    <p>
+                        Genres: {{movie.genres.join(", ")}}
+                    </p>
+                </mat-card-subtitle>
+                <span>
+                    <i class="fas fa-star rating"></i>
+                    {{movie.rating}}
+                </span>
+                <mat-card-actions>
+                    <a mat-button routerLink="/details/1" class="watch-btn">WATCH</a>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</div>
+<nav data-pagination>
+    <a href=#><i class="fas fa-backward"></i></a>
+    <ul>
+      <li class=current><a href=#1>1</a>
+      <li><a href=#2>2</a>
+      <li><a href=#3>3</a>
+      <li><a href=#4>4</a>
+      <li><a href=#5>5</a>
+      <li><a href=#6>6</a>
+      <li><a href=#7>7</a>
+      <li><a href=#8>8</a>
+      <li><a href=#9>9</a>
+    </ul>
+    <a href=#2><i class="fas fa-forward"></i></a>
+  </nav>
