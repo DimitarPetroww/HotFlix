@@ -7,6 +7,7 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { RouterModule } from '@angular/router';
 import { UserRoutingModule } from '../user/user-routing.module';
 import { DetailsComponent } from './details/details.component';
+import { WatchComponent } from './watch/watch.component';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { DetailsComponent } from './details/details.component';
     HomeComponent,
     SideNavComponent,
     DetailsComponent,
+    WatchComponent,
   ],
   imports: [
     CommonModule,

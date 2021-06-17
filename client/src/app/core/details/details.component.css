@@ -1,0 +1,21 @@
+.content {
+    padding: 16px;
+}
+
+.content > mat-card {
+    width: 100%;
+}
+mat-toolbar {
+    background-color: tomato !important;
+}
+mat-card {
+    background-color: #29282E;
+    color: white;
+}
+a {
+    background-color: tomato !important;
+    text-decoration: none;
+}
+a:hover {
+    color: black;
+}
