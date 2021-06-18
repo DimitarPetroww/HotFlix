@@ -349,10 +349,10 @@ class MovieService {
         this.http = http;
     }
     loadMovies() {
-        return this.http.get("http://localhost:80/api/movies");
+        return this.http.get("/api/movies");
     }
     loadMovieById(id) {
-        return this.http.get("http://localhost:80/api/movies/" + id);
+        return this.http.get("/api/movies/" + id);
     }
 }
 MovieService.ɵfac = function MovieService_Factory(t) { return new (t || MovieService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };

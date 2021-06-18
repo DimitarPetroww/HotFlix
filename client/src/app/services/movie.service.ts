@@ -10,9 +10,9 @@ export class MovieService {
   constructor(private http: HttpClient) { }
 
   loadMovies(): Observable<IMovie[]>{
-    return this.http.get<IMovie[]>("http://localhost:80/api/movies")
+    return this.http.get<IMovie[]>("/api/movies")
   }
   loadMovieById(id): Observable<IMovie> {
-    return this.http.get<IMovie>("http://localhost:80/api/movies/" + id)
+    return this.http.get<IMovie>("/api/movies/" + id)
   }
 }
