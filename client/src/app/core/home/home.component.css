@@ -1,5 +1,6 @@
 .content {
     padding: 16px;
+    background-color: slategray !important;
 }
 
 .content > mat-card {
