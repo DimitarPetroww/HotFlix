@@ -1,5 +1,5 @@
-const baseRouter = require("./controllers/baseRouter")
+const movieController = require("./controllers/movieController")
 
 module.exports = (app) => {
-    app.use("/api", baseRouter)
+    app.use("/api/movies", movieController)
 };

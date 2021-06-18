@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { UserRoutingModule } from '../user/user-routing.module';
 import { DetailsComponent } from './details/details.component';
 import { WatchComponent } from './watch/watch.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { WatchComponent } from './watch/watch.component';
     CommonModule,
     MaterialModule,
     RouterModule,
-    UserRoutingModule
+    UserRoutingModule,
+    SharedModule
   ],
   exports: [
     HeaderComponent,

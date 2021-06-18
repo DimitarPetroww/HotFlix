@@ -9,7 +9,7 @@ const config = {
     production: {
         PORT: process.env.PORT || 80,
         origin: ['https://hot-flix.herokuapp.com/'],
-        DB_CONNECTION : 'mongodb+srv://Qnko1:zsexdr123@hotflix.3epgb.mongodb.net/HotFlix?retryWrites=true&w=majority',
+        DB_CONNECTION : 'mongodb+srv://Qnko:zsexdr123@hotflix.3epgb.mongodb.net/HotFlix?retryWrites=true&w=majority',
         SALT_ROUNDS : 10,
         SECRET_WORD : 'very_secret',
     }
