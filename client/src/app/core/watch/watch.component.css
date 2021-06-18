@@ -1,0 +1,8 @@
+mat-toolbar {
+    background-color: tomato !important;
+}
+mat-card {
+    background-color: #29282E;
+    color: white;
+    height: 700px;
+}   

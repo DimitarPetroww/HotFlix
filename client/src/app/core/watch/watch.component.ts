@@ -11,5 +11,5 @@ export class WatchComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
+

@@ -1,9 +1,13 @@
 .content {
-    padding: 16px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
 }
 
 .content > mat-card {
     width: 100%;
+    box-sizing:border-box;
 }
 mat-toolbar {
     background-color: tomato !important;
@@ -12,8 +16,12 @@ mat-card {
     background-color: #29282E;
     color: white;
 }
-a {
+.orange {
     background-color: tomato !important;
+    text-decoration: none;
+}
+.blue {
+    background-color:skyblue !important;
     text-decoration: none;
 }
 a:hover {
