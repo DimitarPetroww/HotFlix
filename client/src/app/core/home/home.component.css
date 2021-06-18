@@ -1,10 +1,10 @@
 .content {
     padding: 16px;
-    background-color: slategray !important;
 }
 
 .content > mat-card {
     width: 200px;
+    background-color:  #29282E !important;
 }
 .rating {
     color: gold;
