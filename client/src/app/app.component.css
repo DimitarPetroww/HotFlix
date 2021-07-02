@@ -6,7 +6,7 @@ mat-sidenav {
     background-color: #29282E;
 }
 main {
-    padding: 10px;
+    height: 80%;
 }
 mat-sidenav-container {
     background: transparent;

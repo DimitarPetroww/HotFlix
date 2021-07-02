@@ -1,42 +1,33 @@
-<!-- <mat-toolbar color="primary">
-    MOVIES
-</mat-toolbar> -->
-<div class="content">
-    <div fxLayout="row wrap" fxLayoutGap="16px grid">
-        <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let movie of movies">
-            <mat-card class="mat-elevation-z4">
-                <mat-card-header>
-                    <mat-card-title>{{movie.name}}</mat-card-title>
-                </mat-card-header>
-                <img mat-card-image [src]="movie.imageUrl">
-                <mat-card-subtitle>
-                    <p>
-                        Genres: {{movie.genres.join(", ")}}
-                    </p>
-                </mat-card-subtitle>
-                <span>
-                    <i class="fas fa-star rating"></i>
-                    {{movie.likes.length}}
-                </span>
-                <mat-card-actions>
-                    <a mat-button [routerLink]="['/details', movie._id]" class="watch-btn">WATCH</a>
-                </mat-card-actions>
-            </mat-card>
+<ngb-carousel class="carousel-container">
+    <ng-template ngbSlide>
+        <div class="carousel-item active"
+            style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1485846234645-a62644f84728?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=740&q=80')">
+            
+            <div class="container">
+                <h1>Watch movies</h1>
+                <p>Check what movies we have</p>
+                <a routerLink="/browse" class="btn btn-lg btn-primary">Browse</a>
+            </div>
         </div>
-    </div>
-</div>
-<nav data-pagination>
-    <a href=#><i class="fas fa-backward"></i></a>
-    <ul>
-        <li class=current><a href=#1>1</a>
-        <li><a href=#2>2</a>
-        <li><a href=#3>3</a>
-        <li><a href=#4>4</a>
-        <li><a href=#5>5</a>
-        <li><a href=#6>6</a>
-        <li><a href=#7>7</a>
-        <li><a href=#8>8</a>
-        <li><a href=#9>9</a>
-    </ul>
-    <a href=#2><i class="fas fa-forward"></i></a>
-</nav>
+    </ng-template>
+    <ng-template ngbSlide>
+        <div class="carousel-item active"
+            style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://images.unsplash.com/photo-1594908900066-3f47337549d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80)">
+            <div class="container">
+                <h1>Do you already have an account?</h1>
+                <p>Sign in right now and have fun</p>
+                <a routerLink="/user/login" class="btn btn-lg btn-primary">Sign up</a>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template ngbSlide>
+        <div class="carousel-item active"
+            style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(https://images.unsplash.com/photo-1586899028174-e7098604235b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80)">
+            <div class="container">
+                <h1>If you dont have an account? Please, Sign Up</h1>
+                <p>Sign up and have fun</p>
+                <a routerLink="/user/register" class="btn btn-lg btn-primary">Sign in</a>
+            </div>
+        </div>
+    </ng-template>
+</ngb-carousel>

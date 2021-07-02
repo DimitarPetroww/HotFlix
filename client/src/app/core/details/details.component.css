@@ -1,7 +1,7 @@
 .content {
     width: 100%;
     margin: 0;
-    padding: 0;
+    padding-top: 10px;
     box-sizing:border-box;
 }
 
@@ -12,9 +12,10 @@
 mat-toolbar {
     background-color: tomato !important;
 }
-mat-card {
+.container.mat-card {
     background-color: #29282E;
     color: white;
+    margin: 0;
 }
 .orange {
     background-color: tomato !important;
@@ -26,4 +27,40 @@ mat-card {
 }
 a:hover {
     color: black;
+}
+body {
+    background-color: #eee
+}
+
+.bdge {
+    height: 21px;
+    background-color: orange;
+    color: #fff;
+    font-size: 11px;
+    padding: 8px;
+    border-radius: 4px;
+    line-height: 3px
+}
+
+.comments {
+    text-decoration: underline;
+    text-underline-position: under;
+    cursor: pointer
+}
+
+.dot {
+    height: 7px;
+    width: 7px;
+    margin-top: 3px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block
+}
+
+.hit-voting:hover {
+    color: blue
+}
+
+.hit-voting {
+    cursor: pointer
 }

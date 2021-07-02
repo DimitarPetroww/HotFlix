@@ -1,18 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { MovieService } from 'src/app/services/movie.service';
-import { IMovie } from "../../interfaces/movie"
+import { Component } from '@angular/core';
+import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-home',
+  selector: 'ngbd-carousel-navigation',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  providers: [NgbCarouselConfig]  // add NgbCarouselConfig to the component providers
 })
-export class HomeComponent implements OnInit {
-  movies: IMovie[]
+export class HomeComponent {
 
-  constructor(private movieService: MovieService) { }
+  constructor() {
 
-  ngOnInit(): void {
-    this.movieService.loadMovies().subscribe(x => this.movies = x)
   }
+
 }

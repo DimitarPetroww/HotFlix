@@ -5,10 +5,13 @@
         </button>
     </div>
     <div>
-        <a routerLink="/" routerLinkActive="active">BROWSE</a>
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">HOME</a>
     </div>
     <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
         <ul fxLayout fxLayoutGap="15px" class="navigation-items">
+            <li>
+                <a routerLink="/browse" routerLinkActive="active">BROWSE</a>
+            </li>
             <li>
                 <a routerLink="/user/register" routerLinkActive="active">REGISTER</a>
             </li>

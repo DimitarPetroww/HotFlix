@@ -1,27 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DetailsComponent } from './core/details/details.component';
+import { BrowseComponent } from './core/browse/browse.component';
 import { HomeComponent } from './core/home/home.component';
-import { WatchComponent } from './core/watch/watch.component';
-
 
 const routes: Routes = [
   {
     path: "",
     pathMatch: "full",
-    redirectTo: "/browse"
+    component: HomeComponent
   },
   {
     path: "browse",
-    component: HomeComponent
+    component: BrowseComponent
   },
   {
     path: "details/:id",
     component: DetailsComponent
-  },
-  {
-    path: "watch/:id",
-    component: WatchComponent
   }
 ];
 
