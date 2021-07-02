@@ -3,7 +3,7 @@ a {
     color: white;
 }
 a:hover{
-    color:  #f60;
+    color:  #E50914;
 }
 .navigation-items{
     list-style-type: none;
@@ -11,10 +11,10 @@ a:hover{
     margin: 0;
 }
 .active {
-    color: #f60;
+    color: #E50914;
 }
 .toggle {
-    color: #f60 !important;
+    color: #E50914 !important;
 }
 mat-toolbar{
     background-color: #29282E;

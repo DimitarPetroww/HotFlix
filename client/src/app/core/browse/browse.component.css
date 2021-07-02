@@ -5,11 +5,8 @@
 .content > mat-card {
     width: 200px;
 }
-.rating {
-    color: gold;
-}
 i:not(.rating) {
-    color: #f60;
+    color: #E50914;
 }
 img {
     height: 420px;
@@ -20,7 +17,12 @@ mat-toolbar {
     text-align: center;
 }
 .watch-btn {
-    background: tomato;
+    background: #0069D9;
+    color: white;
+}
+.watch-btn:hover {
+  text-decoration: none;
+  color: black;
 }
 [data-pagination],
 [data-pagination] *,
@@ -61,13 +63,14 @@ mat-toolbar {
   font-size: 140%;
 }
 [data-pagination] a {
-  color: #777;
+  color: white;
   font-size: 100%;
   padding: .5em;
 }
 [data-pagination] a:focus,
 [data-pagination] a:hover {
-  color: #f60;
+  color: #E50914;
+  text-decoration: none;
 }
 [data-pagination] li.current > a {
   color: white;
