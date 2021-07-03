@@ -10,6 +10,7 @@ import { CoreModule } from './core/core.module';
 import { MovieService } from './services/movie.service';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
+import { MovieModule } from './movie/movie.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { UserModule } from './user/user.module';
     HttpClientModule,
     MaterialModule,
     SharedModule,
-    UserModule
+    UserModule,
+    MovieModule
   ],
   providers: [MovieService],
   bootstrap: [AppComponent]

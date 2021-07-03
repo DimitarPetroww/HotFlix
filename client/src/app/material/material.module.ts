@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { MatSidenavModule } from "@angular/material/sidenav"
 import { MatTabsModule } from "@angular/material/tabs"
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -12,9 +11,7 @@ import { MatPaginatorModule } from "@angular/material/paginator"
 
 @NgModule({
   declarations: [],
-  imports: [
-    
-  ],
+  imports: [],
   exports: [
     MatSidenavModule,
     MatTabsModule,

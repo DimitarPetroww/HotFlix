@@ -5,24 +5,27 @@
 .content > mat-card {
     width: 200px;
 }
+p {
+  color: black;
+  font-weight: 420;
+}
 i:not(.rating) {
     color: #E50914;
 }
 img {
     height: 420px;
 }
+a:hover {
+  color: black;
+}
+.btn {
+  background-color: tomato !important;
+  border: none !important;
+}
 mat-toolbar {
     color: #3F51B5 !important;
     background: 000000 !important;
     text-align: center;
-}
-.watch-btn {
-    background: #0069D9;
-    color: white;
-}
-.watch-btn:hover {
-  text-decoration: none;
-  color: black;
 }
 [data-pagination],
 [data-pagination] *,

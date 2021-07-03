@@ -6,7 +6,6 @@ import { MaterialModule } from '../material/material.module';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { RouterModule } from '@angular/router';
 import { UserRoutingModule } from '../user/user-routing.module';
-import { DetailsComponent } from './details/details.component';
 import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -17,7 +16,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HeaderComponent,
     BrowseComponent,
     SideNavComponent,
-    DetailsComponent,
     HomeComponent,
   ],
   imports: [
