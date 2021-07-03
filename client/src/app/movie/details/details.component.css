@@ -2,9 +2,14 @@
     padding-top: 10px;
 }
 .container.mat-card {
-    background-color: #29282E;
+    background-color: rgb(41, 40, 46, 0.5) !important;
     color: white;
     margin: 0 auto;
+}
+section {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 30px;
 }
 .red {
     background-color: #E50914 !important;
@@ -22,26 +27,55 @@
     background-color:#0281ff !important;
     color: white;
 }
-.comments {
-    text-decoration: underline;
-    text-underline-position: under;
-    cursor: pointer
+.info {
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
 }
-.dot {
-    height: 7px;
-    width: 7px;
-    margin-top: 3px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block
+ul {
+    padding-left: 0px;
+    background-color: rgb(41, 40, 46, 0.5) !important;
 }
-.hit-voting:hover {
-    color: blue
+section {
+    background-color: rgb(41, 40, 46, 0.7) !important;
+    border-radius: 4px;
 }
-
-.hit-voting {
-    cursor: pointer
+form {
+    padding: 0 5px;
 }
-.flex-container {
-    display: flex;
+i {
+    color: #e23c44;
+}
+i:hover {
+    color: #c00c15;
+}
+.btn {
+    background: #E50914 !important;
+    border: none;
+}
+li {
+    list-style: none;
+    background-color: rgb(41, 40, 46, 0.7) !important;
+    color: white;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 6px;
+    border-top: 1px solid gray;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+.wrapper {
+    display: inline-block;
+    width: 50%;
+}
+.comment-text-sm {
+    max-width: 500px;
+}
+.orange {
+    background-color: tomato;
+    text-decoration: none;
+}
+.orange:hover {
+    color: white;
+    background-color: rgb(238, 69, 39);
 }

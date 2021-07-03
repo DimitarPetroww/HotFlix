@@ -5,8 +5,14 @@
 .content > mat-card {
     width: 200px;
 }
+mat-card-title {
+  color: white;
+}
+mat-card {
+  background-color: rgb(41, 40, 46, 0.7) !important;
+}
 p {
-  color: black;
+  color: white;
   font-weight: 420;
 }
 i:not(.rating) {
