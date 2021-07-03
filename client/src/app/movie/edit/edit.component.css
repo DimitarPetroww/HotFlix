@@ -1,0 +1,102 @@
+@import url('https://use.fontawesome.com/releases/v5.12.1/css/all.css');
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
+
+.edit-label {
+  display: flex;
+  justify-content: space-around;
+}
+
+h1 {
+    text-align: center;
+}
+.edit-input {
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-trip textarea.form-control {
+  width: 100%;
+  height: 90px;
+}
+.form-control-2 {
+  text-align: center;
+  display: block;
+  width: 45%;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+input.form-control-2, textarea.form-control, input.form-control, textarea:disabled {
+  box-shadow: 0px -2px 20px -1px #E50914, inset -14px -14px 30px -13px rgb(0 0 0 / 55%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  outline: none;
+}
+
+textarea:disabled {
+  width: 100%;
+  resize: none;
+}
+
+.form-group p {
+  color: #f8f9fa;
+  text-shadow: 1px 1px #E50914;
+  font-size: 20px;
+  font-style: italic;
+}
+input.form-control-2::placeholder, textarea.form-control::placeholder {
+  color: rgb(167, 162, 162);
+}
+
+textarea.form-control:focus, input.form-control:focus, input.form-control-2:focus {
+  border: 1px solid #E50914;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  box-shadow: none;
+}
+
+textarea, textarea.form-control, textarea:disabled {
+  padding: 5px 10px;
+  text-align: center;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  word-wrap: break-word;
+}
+
+textarea, input {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+label, .container>h1 {
+  color: white;
+}
+
+.form-group textarea {
+  resize: none;
+}
+
+.container form {
+  text-align: center;
+}
+
+i {
+  color: #0578B9;
+}
+.btn.btn-primary {
+  background-color: #E50914;
+  border: none;
+}
+
+.btn.btn-primary:hover {
+  background-color: #c72830;
+}

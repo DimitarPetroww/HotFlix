@@ -18,8 +18,12 @@ img {
 a:hover {
   color: black;
 }
+.btn:hover {
+  background-color: #ff000d !important;
+  color: white;
+}
 .btn {
-  background-color: tomato !important;
+  background-color: #E50914 !important;
   border: none !important;
 }
 mat-toolbar {

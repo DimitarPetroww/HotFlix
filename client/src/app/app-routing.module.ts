@@ -4,6 +4,7 @@ import { DetailsComponent } from './movie/details/details.component';
 import { BrowseComponent } from './core/browse/browse.component';
 import { HomeComponent } from './core/home/home.component';
 import { CreateComponent } from './movie/create/create.component';
+import { EditComponent } from './movie/edit/edit.component';
 
 const routes: Routes = [
   {
@@ -22,7 +23,12 @@ const routes: Routes = [
   {
     path: "create",
     component: CreateComponent
-  }
+  },
+  {
+    path: "edit/:id",
+    component: EditComponent
+  },
+  
 ];
 
 @NgModule({

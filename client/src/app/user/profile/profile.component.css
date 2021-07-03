@@ -16,7 +16,7 @@
 }
 .btn-pink {
     background-color:#E50914;
-    color: #fff;
+    color: #fff !important;
     height: 70px;
     padding: 20px 30px;
     margin-top: 15px

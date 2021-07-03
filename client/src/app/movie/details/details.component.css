@@ -1,53 +1,32 @@
 .content {
-    width: 100%;
-    margin: 0;
     padding-top: 10px;
-    box-sizing:border-box;
-}
-
-.content > mat-card {
-    width: 100%;
-    box-sizing:border-box;
-}
-mat-toolbar {
-    background-color: tomato !important;
 }
 .container.mat-card {
     background-color: #29282E;
     color: white;
-    margin: 0;
+    margin: 0 auto;
 }
-.orange {
-    background-color: tomato !important;
+.red {
+    background-color: #E50914 !important;
     text-decoration: none;
+    color: white;
 }
 .blue {
-    background-color:skyblue !important;
+    background-color:#0778E7 !important;
     text-decoration: none;
 }
-a:hover {
-    color: black;
+.red:hover {
+    background-color: #ff000d !important
 }
-body {
-    background-color: #eee
+.blue:hover {
+    background-color:#0281ff !important;
+    color: white;
 }
-
-.bdge {
-    height: 21px;
-    background-color: orange;
-    color: #fff;
-    font-size: 11px;
-    padding: 8px;
-    border-radius: 4px;
-    line-height: 3px
-}
-
 .comments {
     text-decoration: underline;
     text-underline-position: under;
     cursor: pointer
 }
-
 .dot {
     height: 7px;
     width: 7px;
@@ -56,11 +35,13 @@ body {
     border-radius: 50%;
     display: inline-block
 }
-
 .hit-voting:hover {
     color: blue
 }
 
 .hit-voting {
     cursor: pointer
+}
+.flex-container {
+    display: flex;
 }
