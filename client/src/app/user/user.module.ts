@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     HttpClientModule,
     SharedModule,
-    NgbModule
+    NgbModule,
+    MaterialModule
+    
   ],
   exports: [
   ]

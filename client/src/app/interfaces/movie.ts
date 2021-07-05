@@ -1,3 +1,5 @@
+import { IComment } from "./comment";
+
 export interface IMovie {
     _id: string
     likes: string[],
@@ -7,6 +9,6 @@ export interface IMovie {
     description: string
     imageUrl: string
     trailerID: string,
-    movieID: string
+    comments: IComment[],
     __v: number
 }

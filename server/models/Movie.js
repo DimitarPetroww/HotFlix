@@ -7,7 +7,9 @@ const schema = new Schema({
     imageUrl: {type: String, required: true},
     genres: {type: Array, required: true},
     actors: {type: Array, required: true},
-    likes: [{type: Schema.Types.ObjectId, ref: "User"}] 
+    likes: [{type: Schema.Types.ObjectId, ref: "User"}],
+    owner: {type: Schema.Types.ObjectId, ref: "User"},
+    comments: [{type: Schema.Types.ObjectId, ref: "Comment"}]
 })
 
 module.exports = model("Movie", schema)

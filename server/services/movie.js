@@ -6,7 +6,13 @@ function getAll() {
 function getById(id) {
     return Movie.findById(id)
 }
+function create(data) {
+    const existing = new Movie(data)
+
+    return existing.save()
+}
 module.exports = {
     getAll,
-    getById
+    getById,
+    create
 }
