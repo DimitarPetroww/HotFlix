@@ -18,8 +18,16 @@ router.get("/:id", async (req, res) => {
     }
     res.json(movie)
 })
-router.post("/create", async (req, res) => {
-    console.log(req.body);
+router.post("/", async (req, res) => {
+    const data = {
+        name: req.body.name,
+        trailerID: req.body.trailerID,
+        genre: req.body.genre,
+        author: req.body.author,
+        imageUrl: req.body.imageUrl,
+        description: req.body.description
+    }
+    console.log(data);
 })
 
 module.exports = router

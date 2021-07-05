@@ -5,8 +5,8 @@ const schema = new Schema({
     description: {type: String, required: true},
     trailerID: {type: String, required: true},
     imageUrl: {type: String, required: true},
-    genres: {type: Array, required: true},
-    actors: {type: Array, required: true},
+    genre: {type: String, required: true},
+    author: {type: String, required: true},
     likes: [{type: Schema.Types.ObjectId, ref: "User"}],
     owner: {type: Schema.Types.ObjectId, ref: "User"},
     comments: [{type: Schema.Types.ObjectId, ref: "Comment"}]

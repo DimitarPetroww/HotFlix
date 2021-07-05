@@ -1,34 +1,43 @@
+<app-alert *ngIf="movie.touched && movie.errors?.required" message="Movie name is required"></app-alert>
+<app-alert *ngIf="trailer.touched && trailer.errors?.required" message="Youtube Trailer ID is required"></app-alert>
+<app-alert *ngIf="genre.touched && genre.errors?.required" message="Genre is required"></app-alert>
+<app-alert *ngIf="author.touched && author.errors?.required" message="Author is required"></app-alert>
+<app-alert *ngIf="img.touched && img.errors?.required" message="Image URL is required"></app-alert>
+<app-alert *ngIf="img.touched && img.errors?.pattern" message="Image URL is in incorrect format"></app-alert>
+<app-alert *ngIf="description.touched && description.errors?.required" message="Description is required"></app-alert>
+<app-alert *ngIf="description.touched && description.errors?.minlength" message="Description should be atleast 10 characters long"></app-alert>
+
 <div class="container create-trip">
     <h1>Create movie</h1>
     <div>
-        <form action="" method="POST">
+        <form #f="ngForm" (ngSubmit)="submitHandler(f.value)">
             <div class="create-label">
                 <label for="name"> Movie Name </label>
                 <label for="trailerID"> Movie Youtube Trailer ID </label>
             </div>
             <div class="form-group create-input">
-                <input type="text" class="form-control-2" id="name" placeholder="Movie Name" name="name" value="">
+                <input type="text" class="form-control-2" id="name" placeholder="Movie Name" name="name" ngModel required #movie="ngModel">
                 <input type="text" class="form-control-2" id="trailerID" placeholder="Youtube Trailer ID"
-                    name="trailerID" value="">
+                    name="trailerID" ngModel required #trailer="ngModel">
             </div>
             <div class="create-label">
-                <label for="genres">Genres</label>
-                <label for="actors">Actors</label>
+                <label for="genre">Genre</label>
+                <label for="author">Author</label>
             </div>
             <div class="form-group create-input">
-                <input type="text" class="form-control-2" id="genres" placeholder="Genres" name="genres" value="">
-                <input type="text" class="form-control-2" id="actors" placeholder="Actors" name="actors" value="">
+                <input type="text" class="form-control-2" id="genre" placeholder="Genre" name="genre" ngModel required #genre="ngModel">
+                <input type="text" class="form-control-2" id="author" placeholder="Author" name="author" ngModel required #author="ngModel">
             </div>
             <div class="form-group">
                 <label for="movieImage">Movie Image</label>
-                <input type="text" class="form-control" id="movieImage" placeholder="https://..." name="imageUrl">
+                <input type="text" class="form-control" id="movieImage" placeholder="https://..." name="imageUrl" ngModel #img="ngModel" required pattern="^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$">
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
                 <textarea class="form-control" id="description" placeholder="Information about the movie"
-                    name="description"></textarea>
+                    name="description" ngModel required minlength="10" #description="ngModel"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Create</button>
         </form>
     </div>
 </div>

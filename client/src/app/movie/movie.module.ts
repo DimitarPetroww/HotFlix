@@ -6,6 +6,8 @@ import { SharedModule } from '../shared/shared.module';
 import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { MovieService } from '../services/movie.service';
 
 
 
@@ -15,12 +17,14 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     MaterialModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   exports: [
     DetailsComponent,
     CreateComponent,
     EditComponent
-  ]
+  ],
+  providers: [MovieService]
 })
 export class MovieModule { }
