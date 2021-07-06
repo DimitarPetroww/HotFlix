@@ -1,5 +1,6 @@
 const express = require("express")
 const jwt = require("jsonwebtoken")
+const bcrypt = require("bcrypt")
 const router = express.Router()
 
 const config = require("../config/config")
@@ -13,6 +14,7 @@ router.post("/register", async (req, res) => {
         password: req.body.password,
         repeatPassword: req.body.repeatPassword
     }
+    console.log(data);
     if(Object.values(data).some(x => x == "")) {
 
     }
@@ -27,7 +29,7 @@ router.post("/register", async (req, res) => {
     const token = jwt.sign({email: user.email, _id: user._id, username: user.username}, config.TOKEN_SECRET)
     res.cookie(config.COOKIE_NAME, token)
     
-    res.json(data)
+    res.json(user)
 })
 
 module.exports = router
