@@ -618,13 +618,13 @@ class MovieService {
         this.http = http;
     }
     loadMovies() {
-        return this.http.get("/api/movies");
+        return this.http.get("/api/movies", { withCredentials: true });
     }
     loadMovieById(id) {
-        return this.http.get("/api/movies/" + id);
+        return this.http.get("/api/movies/" + id, { withCredentials: true });
     }
     createMovie(data) {
-        return this.http.post("/api/movies", data);
+        return this.http.post("/api/movies", data, { withCredentials: true });
     }
 }
 MovieService.ɵfac = function MovieService_Factory(t) { return new (t || MovieService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
