@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MaterialModule } from '../material/material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,8 +20,8 @@ import { MaterialModule } from '../material/material.module';
     HttpClientModule,
     SharedModule,
     NgbModule,
-    MaterialModule
-    
+    MaterialModule,
+    ReactiveFormsModule
   ],
   exports: [
   ]

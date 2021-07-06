@@ -31,7 +31,7 @@ router.post("/", async (req, res) => {
 
     }
     data.likes = []
-    data.owner = req.user?._id
+    data.owner = req.user._id
     data.comments = []
     
     res.json(data)
