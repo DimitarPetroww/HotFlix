@@ -1,33 +1,30 @@
-<app-alert *ngIf="form.get('email').touched && form.get('email').errors?.required" message="Email is required">
-</app-alert>
-<app-alert *ngIf="form.get('email').touched && form.get('email').errors?.pattern"
-    message="Email should be in the correct format"></app-alert>
-<app-alert *ngIf="form.get('username').touched && form.get('username').errors?.required" message="Username is required">
-</app-alert>
-<app-alert *ngIf="form.get('password').touched && form.get('password').errors?.required" message="Password is required">
-</app-alert>
-<app-alert *ngIf="form.get('repeatPassword').touched && form.get('repeatPassword').errors?.confirmedValidator"
-    message="Passwords must match"></app-alert>
-
 <form class="register-box" [formGroup]="form" (ngSubmit)="submitHandler()">
     <h1>Register</h1>
     <div class="textbox">
+        <p class="error" *ngIf="form.get('email').touched && form.get('email').errors?.required">Email is required</p>
+        <p class="error" *ngIf="form.get('email').touched && form.get('email').errors?.pattern">Email is in incorrect format</p>
         <i class="fas fa-user"></i>
-        <input type="text" placeholder="Email" name="email" formControlName="email">
+        <input type="text" placeholder="Email" name="email" formControlName="email"
+            [class.input-error]="form.get('email').touched && form.get('email').errors">
     </div>
     <div class="textbox">
+        <p class="error" *ngIf="form.get('username').touched && form.get('username').errors?.required">Username is required</p>
         <i class="fas fa-user-tie"></i>
-        <input type="text" placeholder="Username" name="username" formControlName="username">
+        <input type="text" placeholder="Username" name="username" formControlName="username"
+            [class.input-error]="form.get('username').touched && form.get('username').errors">
     </div>
-
     <div class="textbox">
+        <p class="error" *ngIf="form.get('password').touched && form.get('password').errors?.required">Password is required</p>
         <i class="fas fa-lock"></i>
-        <input type="password" placeholder="Password" name="password" formControlName="password">
+        <input type="password" placeholder="Password" name="password" formControlName="password"
+            [class.input-error]="form.get('password').touched && form.get('password').errors">
     </div>
     <div class="textbox">
+        <p class="error" *ngIf="form.get('repeatPassword').touched && form.get('repeatPassword').errors?.required">Repeat Password is required</p>
+        <p class="error" *ngIf="form.get('repeatPassword').touched && form.get('repeatPassword').errors?.confirmedValidator">Passwords must match</p>
         <i class="fas fa-key"></i>
-        <input type="password" placeholder="Repeat Password" name="repeatPassword" formControlName="repeatPassword">
+        <input type="password" placeholder="Repeat Password" name="repeatPassword" formControlName="repeatPassword"
+            [class.input-error]="form.get('repeatPassword').touched && form.get('repeatPassword').errors">
     </div>
-
     <input type="submit" class="btn" value="Sign Up" [disabled]="form.invalid">
 </form>

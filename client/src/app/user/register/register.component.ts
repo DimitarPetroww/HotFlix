@@ -11,20 +11,21 @@ import { ConfirmedValidator } from '../../shared/validators';
 export class RegisterComponent {
 
   form: FormGroup
+  error: string
 
   constructor(private fb: FormBuilder, private userService: UserService) {
     this.form = this.fb.group({
       email: ["", [Validators.required, Validators.pattern(/([A-Za-z0-9][A-Za-z0-9]?|[A-Za-z0-9][\w._-]*\w)@(([A-Za-z][A-Za-z]*|[A-Za-z][A-Za-z-]*[A-Za-z])\.([A-Za-z][A-Za-z]*|[A-Za-z][A-Za-z-]*[A-Za-z]))(\.([A-Za-z][A-Za-z]*|[A-Za-z][A-Za-z-]*[A-Za-z]))*/gm)]],
       username: ["", [Validators.required]],
       password: ["", [Validators.required]],
-      repeatPassword: ["", []]
+      repeatPassword: ["", [Validators.required]]
     }, { validators: [ConfirmedValidator("password", "repeatPassword")]})
   }
 
   submitHandler() {
     this.userService.register(this.form.value).subscribe({
       next: (x) => console.log(x),
-      error: (error) => console.log(error.message)
+      error: (error) => this.error = error.message
     })
   }
 }

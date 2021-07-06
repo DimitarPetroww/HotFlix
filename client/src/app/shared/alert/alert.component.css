@@ -1,5 +1,6 @@
 ngb-alert {
     width: fit-content;
     float: right;
-    display: block;
+    background-color: rgb(41, 40, 46, 0.5) !important;
+    color: red !important;
 }

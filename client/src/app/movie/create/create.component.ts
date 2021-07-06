@@ -8,7 +8,9 @@ import { MovieService } from 'src/app/services/movie.service';
 })
 export class CreateComponent implements OnInit {
 
-  constructor(private movieService: MovieService ) { }
+  public fileNameAndSize: string = "Choose Movie Image"
+
+  constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
   }
@@ -22,5 +24,10 @@ export class CreateComponent implements OnInit {
       }
     })
   }
-
+  onFileChange(event) {
+    const [file] = event.target.files
+    const { name: fileName, size } = file;
+    const fileSize = (size / 1000).toFixed(2);
+    this.fileNameAndSize = `${fileName} - ${fileSize}KB`;
+  }
 }
