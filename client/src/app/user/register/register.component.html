@@ -1,20 +1,28 @@
-<form action="" class="register-box">
+<app-alert *ngIf="form.get('email').touched && form.get('email').errors?.required" message="Email is required"></app-alert>
+<app-alert *ngIf="form.get('email').touched && form.get('email').errors?.pattern" message="Email should be in the correct format"></app-alert>
+<app-alert *ngIf="form.get('username').touched && form.get('username').errors?.required" message="Username is required"></app-alert>
+<app-alert *ngIf="form.get('passwords').get('password').touched && form.get('passwords').get('password').errors?.required" message="Password is required"></app-alert>
+<app-alert *ngIf="form.get('passwords').get('repeatPassword').touched && form.get('passwords').get('repeatPassword').errors?.ConfirmPasswordValidator" message="Passwords must match"></app-alert>
+
+<form class="register-box" [formGroup]="form">
     <h1>Register</h1>
     <div class="textbox">
         <i class="fas fa-user"></i>
-        <input type="text" placeholder="Email" name="email" value="">
+        <input type="text" placeholder="Email" name="email" formControlName="email">
     </div>
     <div class="textbox">
         <i class="fas fa-user-tie"></i>
-        <input type="text" placeholder="Username" name="username" value="">
+        <input type="text" placeholder="Username" name="username" formControlName="username">
     </div>
-    <div class="textbox">
-        <i class="fas fa-lock"></i>
-        <input type="password" placeholder="Password" name="password" value="">
+    <div [formGroup]="form.get('passwords')">
+        <div class="textbox">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Password" name="password" formControlName="password">
+        </div>
+        <div class="textbox">
+            <i class="fas fa-key"></i>
+            <input type="password" placeholder="Repeat Password" name="repeatPassword" formControlName="repeatPassword">
+        </div>
     </div>
-    <div class="textbox">
-        <i class="fas fa-key"></i>
-        <input type="password" placeholder="Repeat Password" name="repeatPassowrd" value="">
-    </div>
-    <input type="button" class="btn" value="Sign Up">
+    <input type="button" class="btn" value="Sign Up" [disabled]="form.invalid">
 </form>

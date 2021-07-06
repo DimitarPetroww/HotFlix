@@ -1,4 +1,5 @@
 ngb-alert {
     width: fit-content;
     float: right;
+    display: block;
 }
