@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IMovie } from 'src/app/interfaces/movie';
 import { MovieService } from 'src/app/services/movie.service';
+import { UploadService } from 'src/app/services/upload.service';
 
 @Component({
   selector: 'app-create',
@@ -9,21 +11,32 @@ import { MovieService } from 'src/app/services/movie.service';
 })
 export class CreateComponent implements OnInit {
 
-  public fileNameAndSize: string = "Choose Movie Image"
-  public file: File
+  fileNameAndSize: string = "Choose Movie Image"
+  file: File
+  error: Error
 
-  constructor(private movieService: MovieService) { }
+  constructor(private movieService: MovieService, private uploadService: UploadService, private router: Router) { }
 
   ngOnInit(): void {
   }
   submitHandler(fV: IMovie): void {
-    this.movieService.createMovie(fV).subscribe({
-      next: (x) => {
-        console.log(x);
-      },
-      error: (error) => {
-        console.log(error.message);
-      }
+    const data = {
+      author: fV.author,
+      description: fV.description,
+      genre: fV.genre,
+      name: fV.name,
+      trailerID: fV.trailerID
+    }
+    this.uploadService.upload(this.file).toPromise().then(x => {
+      Object.assign(data, { imageUrl: x.url })
+      this.movieService.createMovie(data as IMovie).subscribe(
+        res => {
+          this.router.navigate(["/browse"])
+        },
+        err => {
+          this.error = err.error.message
+        }
+      )
     })
   }
   onFileChange(event): void {

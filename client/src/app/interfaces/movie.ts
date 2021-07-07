@@ -4,8 +4,8 @@ export interface IMovie {
     _id: string
     likes: string[],
     name: string
-    genres: string[]
-    actors: string[]
+    genre: string
+    author: string
     description: string
     imageUrl: string
     trailerID: string,
