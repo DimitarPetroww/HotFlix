@@ -29,7 +29,8 @@ router.post("/", isAuth(), async (req, res) => {
         author: req.body.author,
     }
     if (Object.values(data).some(x => x == "")) {
-        res.status()
+        res.status(400)
+        return res.json({ message: "All fields are required" })
     }
     data.likes = []
     data.owner = req.user._id

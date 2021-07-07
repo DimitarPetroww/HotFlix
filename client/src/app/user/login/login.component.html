@@ -1,3 +1,5 @@
+<app-alert *ngIf="error" [message]="error"></app-alert>
+
 <form action="" class="login-box" #f="ngForm" (ngSubmit)="submitHandler(f.value)">
     <h1>Login</h1>
     <div class="textbox">

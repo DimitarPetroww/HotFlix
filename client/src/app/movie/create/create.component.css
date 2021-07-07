@@ -132,3 +132,18 @@ p.error {
   margin-bottom: 2px;
   width: 100%;
 }
+@media(max-width: 360px) {
+   .create-trip{
+    padding-top: 90px;
+  }
+}
+@media(max-width: 540px) {
+  .create-trip{
+   padding-top: 95px;
+ }
+}
+@media(max-width: 1024px) {
+  .create-trip{
+   padding-top: 110px;
+ }
+}

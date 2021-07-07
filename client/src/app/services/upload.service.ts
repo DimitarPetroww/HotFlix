@@ -12,7 +12,7 @@ export class UploadService {
       formData.append("file", file);
       formData.append("upload_preset", "HotFlix")
       formData.append("cloud_name", "douwa5b0u")
-
+    
      return this.http.post("https://api.cloudinary.com/v1_1/douwa5b0u/auto/upload", formData)
   }
 }

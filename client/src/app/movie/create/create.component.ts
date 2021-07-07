@@ -34,6 +34,9 @@ export class CreateComponent implements OnInit {
           this.router.navigate(["/browse"])
         },
         err => {
+          setTimeout(() => {
+            this.error = undefined
+          }, 4000)
           this.error = err.error.message
         }
       )
