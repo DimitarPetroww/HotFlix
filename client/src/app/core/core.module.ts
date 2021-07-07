@@ -9,6 +9,7 @@ import { UserRoutingModule } from '../user/user-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { UserService } from '../services/user.service';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   exports: [
     HeaderComponent,
     SideNavComponent,
-  ]
+  ],
+  providers: [UserService]
 })
 export class CoreModule { }

@@ -12,23 +12,22 @@
             <li>
                 <a routerLink="/browse" routerLinkActive="active">BROWSE</a>
             </li>
-            <li>
+            <li *ngIf="isLogged">
                 <a routerLink="/create" routerLinkActive="active">
-
                     CREATE
                 </a>
             </li>
-            <li>
-                <a routerLink="/user/register" routerLinkActive="active">REGISTER</a>
-            </li>
-            <li>
-                <a routerLink="/user/login" routerLinkActive="active">LOGIN</a>
-            </li>
-            <li>
+            <li *ngIf="isLogged">
                 <a routerLink="/user/profile" routerLinkActive="active">PROFILE</a>
             </li>
-            <li>
+            <li *ngIf="isLogged">
                 <a routerLink="/user/logout">SIGN OUT</a>
+            </li>
+            <li *ngIf="!isLogged">
+                <a routerLink="/user/login" routerLinkActive="active">LOGIN</a>
+            </li>
+            <li *ngIf="!isLogged">
+                <a routerLink="/user/register" routerLinkActive="active">REGISTER</a>
             </li>
         </ul>
     </div>

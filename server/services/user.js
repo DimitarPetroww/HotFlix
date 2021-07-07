@@ -16,5 +16,6 @@ async function findUserByEmail(email) {
     return existing
 }
 module.exports = {
-    createUser
+    createUser,
+    findUserByEmail
 }

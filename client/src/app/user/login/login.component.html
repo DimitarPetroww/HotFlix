@@ -1,12 +1,19 @@
-<form action="" class="login-box">
+<form action="" class="login-box" #f="ngForm" (ngSubmit)="submitHandler(f.value)">
     <h1>Login</h1>
     <div class="textbox">
+        <p class="error" *ngIf="email.touched && email.errors?.required">
+            Email is required
+        </p>
+        <p class="error" *ngIf="email.touched && email.errors?.pattern">
+            Email is in incorrect format
+        </p>
         <i class="fas fa-user"></i>
-        <input type="text" placeholder="Email" name="email" value="">
+        <input type="text" placeholder="Email" name="email" ngModel #email="ngModel" required [pattern]="regex" [class.input-error]="email.touched && email.errors">
     </div>
     <div class="textbox">
+        <p class="error" *ngIf="password.touched && password.errors?.required">Password is required</p>
         <i class="fas fa-lock"></i>
-        <input type="password" placeholder="Password" name="password" value="">
+        <input type="password" placeholder="Password" name="password" ngModel #password="ngModel" required [class.input-error]="password.touched && password.errors">
     </div>
-    <input type="button" class="btn" value="Sign In">
+    <input type="submit" class="btn" value="Sign In">
 </form>
