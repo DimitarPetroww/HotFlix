@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-side-nav',
@@ -7,13 +9,24 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class SideNavComponent implements OnInit {
   @Output() sidenavClose = new EventEmitter();
+  get isLogged(): boolean {
+    return this.userService.isLogged
+  }
 
-  constructor() { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
   public onSidenavClose = () => {
     this.sidenavClose.emit();
   }
-
+  logout(event): void {
+    event.preventDefault()
+    this.userService.logout().subscribe({
+      next: () => {
+        this.router.navigate(["/"])
+      },
+      error: (error: Error) => console.log(error.message)
+    })  
+  }
 }

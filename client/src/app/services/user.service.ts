@@ -29,4 +29,11 @@ export class UserService {
       localStorage.setItem("isLogged", "true")
     }))
   }
+  logout(): Observable<any> {
+    return this.http.post<any>(`/api/user/logout`, {}, { withCredentials: true }).pipe(tap(() => {
+      localStorage.removeItem("isLogged")
+      this.user = undefined
+    }))
+    
+  }
 }
