@@ -17,6 +17,9 @@ a:hover{
 .toggle {
     color: #E50914 !important;
 }
+div > a {
+    margin-right: 15px;
+}
 mat-toolbar{
     background-color: #29282E;
 }

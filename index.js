@@ -13,6 +13,7 @@ async function init() {
 
     require("./server/config/express")(app);
     require("./server/router")(app);
+    require("./server/config/cloudinary")(app)
 
     app.get("*", (req, res) => {
         if (allowed.filter(ext => req.url.indexOf(ext) > 0).length > 0) {

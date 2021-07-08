@@ -3,6 +3,7 @@ const router = express.Router()
 const promise = require("../util/promise")
 const movieService = require("../services/movie")
 const { isAuth } = require("../middlewares/guards")
+const cloudinary = require("cloudinary").v2
 
 router.get("/", async (req, res) => {
     const [movies, error] = await promise(movieService.getAll())
@@ -29,12 +30,21 @@ router.post("/", isAuth(), async (req, res) => {
     }
     if (Object.values(data).some(x => x == "")) {
         res.status(400)
+        cloudinary.uploader.destroy(req.body.imageID)
+        cloudinary.uploader.destroy(req.body.trailerID, {resource_type: "video"})
         return res.json({ message: "All fields are required" })
     }
     data.likes = []
     data.owner = req.user._id
     data.comments = []
 
+    const [_, error] = await promise(movieService.create(data))
+    if(error) {
+        res.status(400)
+        cloudinary.uploader.destroy(req.body.imageID)
+        cloudinary.uploader.destroy(req.body.trailerID, {resource_type: "video"})
+        return res.json({ message: error.message })
+    }
     res.json(data)
 })
 

@@ -1,8 +1,8 @@
 <mat-nav-list>
-    <a mat-list-item routerLink="/" (click)="onSidenavClose()">
+    <a mat-list-item routerLink="/" (click)="onSidenavClose()" *ngIf="!isLogged">
         <mat-icon>home</mat-icon> <span class="nav-caption">Home</span>
     </a>
-    <a mat-list-item routerLink="/browse" (click)="onSidenavClose()">
+    <a mat-list-item routerLink="/browse" (click)="onSidenavClose()" *ngIf="isLogged">
         <mat-icon>local_movies</mat-icon> <span class="nav-caption">BROWSE</span>
     </a>
     <a mat-list-item routerLink="/create" (click)="onSidenavClose()" *ngIf="isLogged">

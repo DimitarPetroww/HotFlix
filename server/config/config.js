@@ -6,6 +6,9 @@ const config = {
         SALT_ROUNDS : 10,
         COOKIE_NAME: "SESSION_DATA",
         TOKEN_SECRET : 'very_secret',
+        API_KEY: "665892154755711",
+        API_SECRET: "PLsMITpse8w7XPIosqKetFetI5Y",
+        CLOUD_NAME: "douwa5b0u"
     },
     production: {
         PORT: process.env.PORT || 80,
@@ -14,6 +17,9 @@ const config = {
         SALT_ROUNDS : 10,
         COOKIE_NAME: "SESSION_DATA",
         TOKEN_SECRET : 'very_secret',
+        API_KEY: "665892154755711",
+        API_SECRET: "PLsMITpse8w7XPIosqKetFetI5Y",
+        CLOUD_NAME: "douwa5b0u"
     }
 };
 module.exports = config[process.env.NODE_ENV.trim()];

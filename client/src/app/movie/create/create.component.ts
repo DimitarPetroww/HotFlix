@@ -37,7 +37,8 @@ export class CreateComponent implements OnInit {
       this.uploadService.upload(this.trailerFile).toPromise(),
     ]).then(x => {
       const image = x.find(file => file.video === undefined)
-      const trailer = x.find(file => file.video !== undefined)
+      const trailer = x.find(file => file.video !== undefined)      
+      
       Object.assign(data, { trailerID: trailer.public_id, trailerUrl: trailer.url, imageID: image.public_id, imageUrl: image.url })
       this.movieService.createMovie(data as IMovie).subscribe(
         res => {
