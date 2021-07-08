@@ -1,10 +1,11 @@
 a {
     text-decoration: none;
-    color: white;
+    color: white !important;
 }
 a:hover{
+    cursor: pointer !important;
     text-decoration: none;
-    color:  #E50914;
+    color:  #E50914 !important;
 }
 .navigation-items{
     list-style-type: none;

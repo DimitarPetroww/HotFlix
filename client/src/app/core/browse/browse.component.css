@@ -37,6 +37,9 @@ mat-toolbar {
     background: 000000 !important;
     text-align: center;
 }
+.active {
+  color: #E50914 !important;
+}
 [data-pagination],
 [data-pagination] *,
 [data-pagination] *:before,

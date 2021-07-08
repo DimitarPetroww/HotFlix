@@ -17,7 +17,7 @@
     <a mat-list-item routerLink="/user/profile" (click)="onSidenavClose()" *ngIf="isLogged">
         <mat-icon>face</mat-icon><span class="nav-caption">PROFILE</span>
     </a>
-    <a mat-list-item routerLink="/user/logout" (click)="onSidenavClose()" *ngIf="isLogged" (click)="logout($event)">
+    <a mat-list-item *ngIf="isLogged" (click)="logout($event)">
         <mat-icon>exit_to_app</mat-icon><span class="nav-caption">SIGN OUT</span>
     </a>
 </mat-nav-list>

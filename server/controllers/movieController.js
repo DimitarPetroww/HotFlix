@@ -6,7 +6,8 @@ const { isAuth } = require("../middlewares/guards")
 const cloudinary = require("cloudinary").v2
 
 router.get("/", async (req, res) => {
-    const [movies, error] = await promise(movieService.getAll())
+    const request = req.query.offset ? movieService.getNext(Number(req.query.offset)) : movieService.getAll()
+    const [movies, error] = await promise(request)
     if (error) {
 
     }

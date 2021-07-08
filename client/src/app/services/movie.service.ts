@@ -9,8 +9,11 @@ export class MovieService {
 
   constructor(private http: HttpClient) { }
 
-  loadMovies(): Observable<IMovie[]> {
-    return this.http.get<IMovie[]>("/api/movies", { withCredentials: true })
+  loadNextMovies(offset: number): Observable<IMovie[]> {
+    return this.http.get<IMovie[]>(`/api/movies?offset=${offset}`, { withCredentials: true })
+  }
+  loadAllMovies(): Observable<IMovie[]> {
+    return this.http.get<IMovie[]>(`/api/movies`, { withCredentials: true })
   }
   loadMovieById(id: String): Observable<IMovie> {
     return this.http.get<IMovie>("/api/movies/" + id, { withCredentials: true })

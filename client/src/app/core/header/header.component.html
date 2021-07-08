@@ -15,7 +15,7 @@
                 <a routerLink="/user/profile" routerLinkActive="active">PROFILE</a>
             </li>
             <li *ngIf="isLogged">
-                <a (click)="logout($event)" routerLink="/user/logout">SIGN OUT</a>
+                <a (click)="logout($event)">SIGN OUT</a>
             </li>
             <li *ngIf="!isLogged">
                 <a routerLink="/user/login" routerLinkActive="active">LOGIN</a>
