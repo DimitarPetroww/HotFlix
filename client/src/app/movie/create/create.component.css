@@ -85,7 +85,9 @@ input.input-error, textarea.input-error {
   box-shadow: none;
 }
 
-
+input.form-control {
+  text-align: center;
+}
 textarea, textarea.form-control, textarea:disabled {
   padding: 5px 10px;
   text-align: center;

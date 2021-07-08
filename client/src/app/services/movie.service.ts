@@ -16,6 +16,7 @@ export class MovieService {
     return this.http.get<IMovie>("/api/movies/" + id, { withCredentials: true })
   }
   createMovie(data: IMovie): Observable<IMovie> {
+    console.log(data);
     return this.http.post<IMovie>("/api/movies", data, { withCredentials: true })
   }
 }

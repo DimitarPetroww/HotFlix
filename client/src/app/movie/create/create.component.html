@@ -3,19 +3,12 @@
     <h1>Create movie</h1>
     <div>
         <form #f="ngForm" (ngSubmit)="submitHandler(f.value)">
-            <div class="create-label">
+            <div class="form-group">
                 <label for="name"> Movie Name 
                     <p class="error" *ngIf="movie.touched && movie.errors?.required">Movie name is required</p>
                 </label>
-                <label for="trailerID"> Trailer ID 
-                    <p class="error" *ngIf="trailer.touched && trailer.errors?.required">Youtube Trailer ID is required</p>
-                </label>
-            </div>
-            <div class="form-group create-input">
-                <input type="text" class="form-control-2" id="name" placeholder="Movie Name" name="name" ngModel
+                <input type="text" class="form-control" id="name" placeholder="Movie Name" name="name" ngModel
                     required #movie="ngModel" [class.input-error]="movie.touched && movie.errors">
-                <input type="text" class="form-control-2" id="trailerID" placeholder="Youtube Trailer ID"
-                    name="trailerID" ngModel required #trailer="ngModel" [class.input-error]="trailer.touched && trailer.errors">
             </div>
             <div class="create-label">
                 <label for="genre">
@@ -33,11 +26,14 @@
                     required #author="ngModel" [class.input-error]="author.touched && author.errors">
             </div>
             <div class="form-group">
-                <p class="error" *ngIf="img.touched && img.errors?.required">
-                    Image is required
-                </p>
-                <label for="movieImage" class="file-label">{{fileNameAndSize}}</label>
-                <input type="file" id="movieImage" class="file" ngModel #img="ngModel" required (change)="onFileChange($event)">
+                <p class="error" *ngIf="trailerFileError">{{trailerFileError}}</p>
+                <label for="trailer" class="file-label">{{trailerNameAndSize}}</label>
+                <input type="file" name="trailer" id="trailer" class="file" ngModel #trailer="ngModel" required (change)="onTrailerChange($event)">
+            </div>
+            <div class="form-group">
+                <p class="error" *ngIf="imgfileError">{{imgfileError}}</p>
+                <label for="movieImage" class="file-label">{{imgNameAndSize}}</label>
+                <input type="file" name="image" id="movieImage" class="file" ngModel #img="ngModel" required (change)="onImgChange($event)">
             </div>
             <div class="form-group">
                 <label for="description">Description
@@ -51,7 +47,7 @@
                 <textarea class="form-control" id="description" placeholder="Information about the movie"
                     name="description" ngModel required minlength="10" #description="ngModel" [class.input-error]="description.touched && description.errors"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Create</button>
+            <button type="submit" class="btn btn-primary" [disabled]="f.invalid || !imageFile || !trailerFile">Create</button>
         </form>
     </div>
 </div>
