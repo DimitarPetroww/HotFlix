@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { timer } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 import { ConfirmedValidator } from '../../shared/validators';
 
@@ -32,9 +33,7 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(["/browse"])
       },
       err => {
-        setTimeout(() => {
-          this.error = undefined
-        }, 4000)
+        timer(4000).subscribe(_ => this.error = undefined)
         this.error = err.error.message
       }
     )

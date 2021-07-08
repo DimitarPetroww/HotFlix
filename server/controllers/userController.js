@@ -43,7 +43,7 @@ router.post("/login", async (req, res) => {
         return res.json({message: "All fields are required"})
     }
     const user = await userService.findUserByEmail(data.email)
-    if(!data) {
+    if(!user) {
         res.status(400)
         return res.json({message: "Wrong username or password"})
     }

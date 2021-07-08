@@ -27,9 +27,6 @@ router.post("/", isAuth(), async (req, res) => {
         genre: req.body.genre,
         author: req.body.author,
     }
-    console.log(req.body.trailerID, 1);
-    console.log(req.body.imageID, 2);
-    console.log(data, 3);
     if (Object.values(data).some(x => x == "")) {
         res.status(400)
         return res.json({ message: "All fields are required" })

@@ -11,7 +11,7 @@ import { timer } from "rxjs"
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-
+  isLoading: Boolean = false
   imgNameAndSize: string = "Choose Movie Image"
   trailerNameAndSize: string = "Choose Movie Trailer under 100MB"
   imageFile: File = undefined
@@ -31,6 +31,7 @@ export class CreateComponent implements OnInit {
       genre: fV.genre,
       name: fV.name,
     }
+    this.isLoading = true
     Promise.all([
       this.uploadService.upload(this.imageFile).toPromise(),
       this.uploadService.upload(this.trailerFile).toPromise(),
@@ -40,9 +41,11 @@ export class CreateComponent implements OnInit {
       Object.assign(data, { trailerID: trailer.public_id, trailerUrl: trailer.url, imageID: image.public_id, imageUrl: image.url })
       this.movieService.createMovie(data as IMovie).subscribe(
         res => {
+          this.isLoading = false
           this.router.navigate(["/browse"])
         },
         err => {
+          this.isLoading = false
           timer(4000).subscribe(_ => this.error = undefined)
           this.error = err.error.message
         })

@@ -8,7 +8,7 @@ export interface IMovie {
     author: string
     description: string
     imageUrl: string
-    trailerID: string,
+    trailerUrl: string,
     comments: IComment[],
     __v: number
 }

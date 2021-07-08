@@ -19,7 +19,7 @@ export class DetailsComponent implements OnInit {
 
     this.movieService.loadMovieById(this.movieId).subscribe(x => {
       this.movie = x
-      this.movie.trailerID = "https://www.youtube.com/embed/" + this.movie.trailerID
+      // this.movie.trailerID = "https://www.youtube.com/embed/" + this.movie.trailerID
     })
   }
 

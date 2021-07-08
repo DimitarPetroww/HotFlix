@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlertComponent } from './alert/alert.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 @NgModule({
   declarations: [
-    
     AlertComponent,
-    
+    SpinnerComponent,
   ],
   imports: [
     CommonModule,
     NgbModule
   ],
-  exports: [AlertComponent, ]
+  exports: [AlertComponent, SpinnerComponent]
 })
 export class SharedModule { }

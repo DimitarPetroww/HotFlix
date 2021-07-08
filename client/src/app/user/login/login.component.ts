@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { timer } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -16,9 +17,7 @@ export class LoginComponent {
     this.userService.login(fV).subscribe(
       res=> this.router.navigate(["/browse"]),
       err => {
-        setTimeout(() => {
-          this.error = undefined
-        }, 4000)
+        timer(4000).subscribe(_ => this.error = undefined)
         this.error = err.error.message
       }
     )
