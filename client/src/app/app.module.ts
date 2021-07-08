@@ -25,7 +25,9 @@ import { MovieModule } from './movie/movie.module';
     MaterialModule,
     SharedModule,
     UserModule,
-    MovieModule
+    MovieModule,
+  ],
+  exports: [
   ],
   providers: [MovieService],
   bootstrap: [AppComponent]

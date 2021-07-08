@@ -13,6 +13,7 @@ export class BrowseComponent implements OnInit {
   movies: IMovie[]
   pages: Number[]
   page: number
+  models: String[]
 
   constructor(private movieService: MovieService, private route: ActivatedRoute) { }
 
@@ -27,7 +28,5 @@ export class BrowseComponent implements OnInit {
     this.movieService.loadAllMovies().subscribe(x => {
       this.pages = Array.from({ length: Math.ceil(x.length / 4) }, (v, i) => i + 1)
     })
-
-
   }
 }

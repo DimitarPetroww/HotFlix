@@ -62,5 +62,11 @@ router.post("/logout", async (req, res) => {
 
     res.json({})
 })
+router.get("/isAuth", async (req, res) => {
+    if(req.user) {
+       return res.json(req.user)
+    }
+    res.json({})
+})
 
 module.exports = router

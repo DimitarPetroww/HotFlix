@@ -40,6 +40,10 @@ section {
     background-color: rgb(41, 40, 46, 0.7) !important;
     border-radius: 4px;
 }
+video {
+    background: black;
+    border-radius: 7px;
+}
 form {
     padding: 0 5px;
 }
@@ -87,4 +91,9 @@ li {
         width: 100%;
         margin: 0;
     }
- }
+}
+progress {
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+}

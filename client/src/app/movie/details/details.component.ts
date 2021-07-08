@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 import { IMovie } from 'src/app/interfaces/movie';
 import { MovieService } from 'src/app/services/movie.service';
 
@@ -15,12 +16,9 @@ export class DetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private movieService: MovieService) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(x => this.movieId = x.id)
-
-    this.movieService.loadMovieById(this.movieId).subscribe(x => {
-      this.movie = x
-      // this.movie.trailerID = "https://www.youtube.com/embed/" + this.movie.trailerID
-    })
+    this.route.params.pipe(switchMap(params => {
+      return this.movieService.loadMovieById(params.id)
+    })).subscribe(movie => this.movie = movie)
   }
 
 }

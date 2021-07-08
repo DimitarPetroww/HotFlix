@@ -77,7 +77,7 @@ export class CreateComponent implements OnInit {
     }
     if(Number(fileSize) > 100000) {
       this.trailerFile = undefined
-      this.trailerFileError = "Image should be under 100MB"
+      this.trailerFileError = "Trailer should be under 100MB"
       return undefined
     }
     this.trailerFileError = undefined

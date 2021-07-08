@@ -10,8 +10,6 @@ import { FormsModule } from '@angular/forms';
 import { MovieService } from '../services/movie.service';
 import { UploadService } from '../services/upload.service';
 
-
-
 @NgModule({
   declarations: [DetailsComponent, CreateComponent, EditComponent],
   imports: [
@@ -19,7 +17,7 @@ import { UploadService } from '../services/upload.service';
     MaterialModule,
     SharedModule,
     RouterModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [
     DetailsComponent,
