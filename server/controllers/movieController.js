@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router()
 const promise = require("../util/promise")
 const movieService = require("../services/movie")
-const { isAuth } = require("../middlewares/guards")
+const { isAuthenticated } = require("../middlewares/guards")
 const cloudinary = require("cloudinary").v2
 
 router.get("/", async (req, res) => {
@@ -20,7 +20,7 @@ router.get("/:id", async (req, res) => {
     }
     res.json(movie)
 })
-router.post("/", isAuth(), async (req, res) => {
+router.post("/", isAuthenticated(), async (req, res) => {
     const data = {
         name: req.body.name,
         description: req.body.description,
@@ -38,6 +38,7 @@ router.post("/", isAuth(), async (req, res) => {
     data.likes = []
     data.owner = req.user._id
     data.comments = []
+    data.user = req.user
 
     const [_, error] = await promise(movieService.create(data))
     if(error) {
@@ -47,6 +48,24 @@ router.post("/", isAuth(), async (req, res) => {
         return res.json({ message: error.message })
     }
     res.json(data)
+})
+router.post("/comment", isAuthenticated(), async (req, res) => {
+    const data = {
+        message: req.body.message,
+        movie: req.body.movie,
+    }
+    if(Object.values(data).some(x => x=="")) {
+        res.status(400)
+        return res.json({ message: "All fields are required" })
+    }
+    data.likes = []
+    data.user = req.user
+    const [comments, error] = await promise(movieService.comment(data))
+    if(error) {
+        res.status(400)
+        return res.json({ message: error.message })
+    }
+    res.json(comments)
 })
 
 module.exports = router

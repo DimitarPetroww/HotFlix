@@ -27,6 +27,17 @@ section {
     background-color:#0281ff !important;
     color: white;
 }
+.comment {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+}
+input.input-error {
+    border: 1px solid #E50914;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    box-shadow: none;
+}
 .info {
     display: inline-block;
     width: 100%;
@@ -83,7 +94,7 @@ li {
     color: white;
     background-color: rgb(238, 69, 39);
 }
-@media(max-width: 1024px) {
+@media(max-width: 1200px) {
     .wrapper {
         width: 100%;
     }
@@ -91,9 +102,4 @@ li {
         width: 100%;
         margin: 0;
     }
-}
-progress {
-    width: 90%;
-    display: block;
-    margin: 0 auto;
 }

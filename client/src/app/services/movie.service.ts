@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { IComment } from '../interfaces/comment';
 import { IMovie } from '../interfaces/movie';
 
 @Injectable()
@@ -20,5 +21,8 @@ export class MovieService {
   }
   createMovie(data: IMovie): Observable<IMovie> {
     return this.http.post<IMovie>("/api/movies", data, { withCredentials: true })
+  }
+  comment(data: {message: string, movie: string}): Observable<IComment[]> {
+    return this.http.post<IComment[]>("/api/movies/comment", data, { withCredentials: true })
   }
 }

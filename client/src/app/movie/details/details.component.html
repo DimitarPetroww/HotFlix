@@ -26,91 +26,28 @@
                     </mat-card-actions>
                 </div>
                 <section>
-                    <form action="">
+                    <form #f="ngForm" (ngSubmit)="comment(f.value)">
                         <div class="d-flex flex-row add-comment-section mt-4 mb-4">
                             <img class="img-fluid img-responsive rounded-circle mr-2"
                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1024px-Circle-icons-profile.svg.png"
                                 width="38">
-                            <input type="text" class="form-control mr-3" placeholder="Add comment">
-                            <input class="btn btn-primary" type="submit" value="Comment">
+                            <input type="text" class="form-control mr-3 comment" placeholder="Add comment" name="message" ngModel required #message="ngModel" [class.input-error]="message.touched && message.errors">
+                            <input class="btn btn-primary" type="submit" value="Comment" [disabled]="f.invalid">
                         </div>
                     </form>
                     <ul>
-                        <li>
+                        <li *ngFor="let comment of comments">
                             <div class="d-flex flex-row align-items-center commented-user">
-                                <h5 class="mr-2">Corey oates</h5>
+                                <h5 class="mr-2">{{comment.owner.username}}</h5>
                             </div>
-                            <div class="comment-text-sm"><span>Lorsequat.</span></div>
+                            <div class="comment-text-sm"><span>{{comment.message}}</span></div>
                             <div class="reply-section">
                                 <div class="d-flex flex-row align-items-center voting-icons"><i
                                         class="fa fa-sort-up fa-2x mt-3 hit-voting"></i><i
                                         class="fa fa-sort-down fa-2x mb-3 hit-voting"></i><span class="ml-2">10</span>
                                 </div>
                             </div>
-                        </li>
-                        <li>
-                            <div class="d-flex flex-row align-items-center commented-user">
-                                <h5 class="mr-2">Corey oates - (you)</h5>
-                            </div>
-                            <div class="comment-text-sm"><span>Lorsequat.</span></div>
-                            <div class="reply-section">
-                                <div class="d-flex flex-row align-items-center voting-icons"><i
-                                        class="fa fa-sort-up fa-2x mt-3 hit-voting"></i><i
-                                        class="fa fa-sort-down fa-2x mb-3 hit-voting"></i><span class="ml-2">10</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex flex-row align-items-center commented-user">
-                                <h5 class="mr-2">Corey oates</h5>
-                            </div>
-                            <div class="comment-text-sm"><span>Lorsequat.</span></div>
-                            <div class="reply-section">
-                                <div class="d-flex flex-row align-items-center voting-icons"><i
-                                        class="fa fa-sort-up fa-2x mt-3 hit-voting"></i><i
-                                        class="fa fa-sort-down fa-2x mb-3 hit-voting"></i><span class="ml-2">10</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex flex-row align-items-center commented-user">
-                                <h5 class="mr-2">Corey oates</h5>
-                            </div>
-                            <div class="comment-text-sm"><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt ex tempora laborum dolores fugit enim natus. Reiciendis perferendis aspernatur neque a quasi distinctio nihil, error temporibus praesentium totam veniam molestias?</span></div>
-                            <div class="reply-section">
-                                <div class="d-flex flex-row align-items-center voting-icons"><i
-                                        class="fa fa-sort-up fa-2x mt-3 hit-voting"></i><i
-                                        class="fa fa-sort-down fa-2x mb-3 hit-voting"></i><span class="ml-2">10</span>
-
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex flex-row align-items-center commented-user">
-                                <h5 class="mr-2">Corey oates</h5>
-                            </div>
-                            <div class="comment-text-sm"><span>Lnsequat.</span></div>
-                            <div class="reply-section">
-                                <div class="d-flex flex-row align-items-center voting-icons"><i
-                                        class="fa fa-sort-up fa-2x mt-3 hit-voting"></i><i
-                                        class="fa fa-sort-down fa-2x mb-3 hit-voting"></i><span class="ml-2">10</span>
-
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="d-flex flex-row align-items-center commented-user">
-                                <h5 class="mr-2">Corey oates</h5>
-                            </div>
-                            <div class="comment-text-sm"><span>Lnsequat.</span></div>
-                            <div class="reply-section">
-                                <div class="d-flex flex-row align-items-center voting-icons"><i
-                                        class="fa fa-sort-up fa-2x mt-3 hit-voting"></i><i
-                                        class="fa fa-sort-down fa-2x mb-3 hit-voting"></i><span class="ml-2">10</span>
-
-                                </div>
-                            </div>
-                        </li>
+                        </li>                  
                     </ul>
                 </section>
             </mat-card>
