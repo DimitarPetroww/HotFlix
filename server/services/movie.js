@@ -1,5 +1,4 @@
 const Movie = require("../models/Movie")  
-const Comment = require("../models/Comment")  
 const User = require("../models/User")
 
 
@@ -27,20 +26,9 @@ async function create(data) {
 
     return movie
 }
-async function comment(data) {
-    const comment = new Comment({message: data.message, movie: data.movie, likes: data.likes, owner: data.user})
-    const existingComment = await comment.save()
-    const movie = await getById(data.movie)
-    movie.comments.push(existingComment)
-    await movie.save()
-
-    return movie.comments
-}
-
 module.exports = {
     getAll,
     getById,
     create,
     getNext,
-    comment
 }

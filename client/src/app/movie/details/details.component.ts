@@ -17,28 +17,31 @@ export class DetailsComponent implements OnInit {
   movie: IMovie
   comments: IComment[]
   user: IUser
+  error: string
 
   constructor(private route: ActivatedRoute, private movieService: MovieService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.userService.getUser().subscribe(x=> {
       this.user = x
-    })    
+    }, (err) => this.error = err.errors.message)    
     this.route.params.pipe(switchMap(params => {
       this.movieId = params.id
       return this.movieService.loadMovieById(this.movieId)
     })).subscribe(movie => {
       this.movie = movie 
       this.comments = movie.comments     
-    })
+    }, (err) => this.error = err.errors.message)
   }
   comment(fV) {
     Object.assign(fV, {movie: this.movieId})
     this.movieService.comment(fV).subscribe(x=> {
       this.comments = x
-    })
+    }, (err) => this.error = err.errors.message)
   }
   deleteComment(commentId) {
-    console.log(commentId);
+    this.movieService.deleteComment(commentId).subscribe(x=> {
+      this.comments = x
+    }, (err) => this.error = err.errors.message)
   }
 }

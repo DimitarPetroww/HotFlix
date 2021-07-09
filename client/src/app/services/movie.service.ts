@@ -25,4 +25,7 @@ export class MovieService {
   comment(data: {message: string, movie: string}): Observable<IComment[]> {
     return this.http.post<IComment[]>("/api/movies/comment", data, { withCredentials: true })
   }
+  deleteComment(commentId) {
+    return this.http.delete<IComment[]>("/api/movies/comment/"+ commentId, { withCredentials: true })
+  }
 }

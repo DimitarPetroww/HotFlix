@@ -1,3 +1,4 @@
+<app-alert *ngIf="error" [message]="error"></app-alert>
 <div class="content" *ngIf="movie">
     <div fxLayout="row wrap">
         <div fxFlex="100%">
@@ -26,7 +27,7 @@
                     </mat-card-actions>
                 </div>
                 <section>
-                    <form #f="ngForm" (ngSubmit)="comment(f.value)">
+                    <form #f="ngForm" (ngSubmit)="comment(f.value); f.reset()">
                         <div class="d-flex flex-row add-comment-section mt-4 mb-4">
                             <img class="img-fluid img-responsive rounded-circle mr-2"
                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1024px-Circle-icons-profile.svg.png"
