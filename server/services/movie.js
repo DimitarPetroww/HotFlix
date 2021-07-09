@@ -7,15 +7,21 @@ function getAll() {
     return Movie.find({})
 }
 function getById(id) {
-    return Movie.findById(id)
+    return Movie.findById(id).populate({
+        path : 'comments',
+        populate : {
+          path : 'owner'
+        }
+    })
 }
 function getNext(offset) {
     return Movie.find({}).skip(offset).limit(4)
 }
 async function create(data) {
     const existing = new Movie(data)
-    const user = await User.findById(user._id)
+    const user = await User.findById(data.user._id)
     const movie = await existing.save()
+
     user.ownedMovies.push(movie)
     await user.save()
 
@@ -26,13 +32,11 @@ async function comment(data) {
     const existingComment = await comment.save()
     const movie = await getById(data.movie)
     movie.comments.push(existingComment)
+    await movie.save()
 
-    const comments = await getCommentsByMovieId(movie)
-    return comments
+    return movie.comments
 }
-async function getCommentsByMovieId(id) {
-    return Comment.find({movie: id}).populate("owner").populate("movie")
-} 
+
 module.exports = {
     getAll,
     getById,

@@ -3,7 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { IComment } from 'src/app/interfaces/comment';
 import { IMovie } from 'src/app/interfaces/movie';
+import { IUser } from 'src/app/interfaces/user';
 import { MovieService } from 'src/app/services/movie.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-details',
@@ -14,19 +16,29 @@ export class DetailsComponent implements OnInit {
   movieId: string
   movie: IMovie
   comments: IComment[]
+  user: IUser
 
-  constructor(private route: ActivatedRoute, private movieService: MovieService) { }
+  constructor(private route: ActivatedRoute, private movieService: MovieService, private userService: UserService) { }
 
   ngOnInit(): void {
+    this.userService.getUser().subscribe(x=> {
+      this.user = x
+    })    
     this.route.params.pipe(switchMap(params => {
       this.movieId = params.id
       return this.movieService.loadMovieById(this.movieId)
-    })).subscribe(movie => this.movie = movie)
+    })).subscribe(movie => {
+      this.movie = movie 
+      this.comments = movie.comments     
+    })
   }
   comment(fV) {
     Object.assign(fV, {movie: this.movieId})
     this.movieService.comment(fV).subscribe(x=> {
       this.comments = x
     })
+  }
+  deleteComment(commentId) {
+    console.log(commentId);
   }
 }

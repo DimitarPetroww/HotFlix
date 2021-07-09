@@ -17,5 +17,5 @@
         <i class="fas fa-lock"></i>
         <input type="password" placeholder="Password" name="password" ngModel #password="ngModel" required [class.input-error]="password.touched && password.errors">
     </div>
-    <input type="submit" class="btn" value="Sign In">
+    <input type="submit" class="btn" value="Sign In" [disabled]="f.invalid">
 </form>

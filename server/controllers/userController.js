@@ -6,6 +6,7 @@ const router = express.Router()
 const config = require("../config/config")
 const promise = require("../util/promise")
 const userService = require("../services/user")
+const { isAuthenticated } = require("../middlewares/guards")
 
 router.post("/register", async (req, res) => {
     const data = {
@@ -57,10 +58,13 @@ router.post("/login", async (req, res) => {
     
     res.json(user)
 })
-router.post("/logout", async (req, res) => {
+router.post("/logout", isAuthenticated(), async (req, res) => {
     res.clearCookie(config.COOKIE_NAME)
 
     res.json({})
+})
+router.get("/profile", isAuthenticated(), async (req, res) => {
+    res.json(req.user)
 })
 
 module.exports = router

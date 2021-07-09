@@ -2,12 +2,14 @@
     height: 115%;
 }
 .carousel-item {
+    height: 46rem;
     background: #777;
     color: white;
     position: relative;
     background-position: center;
     background-size: cover;
 }
+
 .container { 
     position: absolute;
     bottom: 0;

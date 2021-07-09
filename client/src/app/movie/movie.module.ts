@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MovieService } from '../services/movie.service';
 import { UploadService } from '../services/upload.service';
+import { UserService } from '../services/user.service';
 
 @NgModule({
   declarations: [DetailsComponent, CreateComponent, EditComponent],
@@ -24,6 +25,6 @@ import { UploadService } from '../services/upload.service';
     CreateComponent,
     EditComponent
   ],
-  providers: [MovieService, UploadService]
+  providers: [MovieService, UploadService, UserService]
 })
 export class MovieModule { }

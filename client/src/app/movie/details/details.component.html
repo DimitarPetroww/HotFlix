@@ -31,23 +31,31 @@
                             <img class="img-fluid img-responsive rounded-circle mr-2"
                                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1024px-Circle-icons-profile.svg.png"
                                 width="38">
-                            <input type="text" class="form-control mr-3 comment" placeholder="Add comment" name="message" ngModel required #message="ngModel" [class.input-error]="message.touched && message.errors">
+                            <input type="text" class="form-control mr-3 comment" placeholder="Add comment"
+                                name="message" ngModel required #message="ngModel"
+                                [class.input-error]="message.touched && message.errors">
                             <input class="btn btn-primary" type="submit" value="Comment" [disabled]="f.invalid">
                         </div>
                     </form>
                     <ul>
                         <li *ngFor="let comment of comments">
                             <div class="d-flex flex-row align-items-center commented-user">
-                                <h5 class="mr-2">{{comment.owner.username}}</h5>
+                                <h5 class="mr-2" *ngIf="comment.owner._id == user._id">{{comment.owner.username}} (you)
+                                </h5>
+                                <h5 class="mr-2" *ngIf="comment.owner._id != user._id">{{comment.owner.username}}</h5>
                             </div>
                             <div class="comment-text-sm"><span>{{comment.message}}</span></div>
                             <div class="reply-section">
-                                <div class="d-flex flex-row align-items-center voting-icons"><i
-                                        class="fa fa-sort-up fa-2x mt-3 hit-voting"></i><i
-                                        class="fa fa-sort-down fa-2x mb-3 hit-voting"></i><span class="ml-2">10</span>
+                                <div class="d-flex flex-row align-items-center voting-icons">
+                                    <i *ngIf="comment.owner._id != user._id"
+                                        class="fa fa-sort-up fa-2x mt-3 hit-voting"></i>
+                                    <i *ngIf="comment.owner._id != user._id"
+                                        class="fa fa-sort-down fa-2x mb-3 hit-voting"></i>
+                                    <span class="ml-2">{{comment.likes.length}}</span>
+                                    <mat-icon *ngIf="comment.owner._id == user._id" class="trashcan" (click)="deleteComment(comment._id)">delete</mat-icon>
                                 </div>
                             </div>
-                        </li>                  
+                        </li>
                     </ul>
                 </section>
             </mat-card>

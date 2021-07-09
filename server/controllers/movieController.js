@@ -60,12 +60,12 @@ router.post("/comment", isAuthenticated(), async (req, res) => {
     }
     data.likes = []
     data.user = req.user
-    const [comments, error] = await promise(movieService.comment(data))
+    const [movie, error] = await promise(movieService.comment(data))
     if(error) {
         res.status(400)
         return res.json({ message: error.message })
     }
-    res.json(comments)
+    res.json(movie)
 })
 
 module.exports = router

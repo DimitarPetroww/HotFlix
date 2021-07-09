@@ -103,3 +103,8 @@ li {
         margin: 0;
     }
 }
+.trashcan {
+    color: #E50914 !important;
+    cursor: pointer;
+    margin-right: 20px;
+}
