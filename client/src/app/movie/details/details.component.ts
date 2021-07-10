@@ -22,26 +22,26 @@ export class DetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private movieService: MovieService, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.getUser().subscribe(x=> {
+    this.userService.getUser().subscribe(x => {
       this.user = x
-    }, (err) => this.error = err.errors.message)    
+    }, (err) => this.error = err.error.message)
     this.route.params.pipe(switchMap(params => {
       this.movieId = params.id
       return this.movieService.loadMovieById(this.movieId)
     })).subscribe(movie => {
-      this.movie = movie 
-      this.comments = movie.comments     
-    }, (err) => this.error = err.errors.message)
+      this.movie = movie
+      this.comments = movie.comments
+    }, (err) => this.error = err.error.message)
   }
   comment(fV) {
-    Object.assign(fV, {movie: this.movieId})
-    this.movieService.comment(fV).subscribe(x=> {
+    Object.assign(fV, { movie: this.movieId })
+    this.movieService.comment(fV).subscribe(x => {
       this.comments = x
-    }, (err) => this.error = err.errors.message)
+    }, (err) => this.error = err.error.message)
   }
   deleteComment(commentId) {
-    this.movieService.deleteComment(commentId).subscribe(x=> {
+    this.movieService.deleteComment(commentId).subscribe(x => {
       this.comments = x
-    }, (err) => this.error = err.errors.message)
+    }, (err) => this.error = err.error.message)
   }
 }

@@ -7,23 +7,23 @@ import { IUser } from '../interfaces/user';
 @Injectable()
 export class UserService {
   get isLogged(): boolean {
-    return !!localStorage.getItem("isLogged")
+    return !!sessionStorage.getItem("isLogged")
   }
   constructor(private http: HttpClient) { }
 
   register(body: Object): Observable<IUser> {
     return this.http.post<IUser>(`/api/user/register`, body, { withCredentials: true }).pipe(tap((x: IUser) => {
-      localStorage.setItem("isLogged", "true")
+      sessionStorage.setItem("isLogged", "true")
     }))
   }
   login(body: Object): Observable<IUser> {
     return this.http.post<IUser>(`/api/user/login`, body, { withCredentials: true }).pipe(tap((x: IUser) => {
-      localStorage.setItem("isLogged", "true")
+      sessionStorage.setItem("isLogged", "true")
     }))
   }
   logout(): Observable<any> {
     return this.http.post<any>(`/api/user/logout`, {}, { withCredentials: true }).pipe(tap(() => {
-      localStorage.removeItem("isLogged")
+      sessionStorage.removeItem("isLogged")
     }))
   }
   getUser(): Observable<IUser> {

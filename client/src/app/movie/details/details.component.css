@@ -58,11 +58,17 @@ video {
 form {
     padding: 0 5px;
 }
-i {
-    color: #e23c44;
+.vote {
+    color: #2D88FF;
+    cursor: pointer;
+    margin-right: 4px;
 }
-i:hover {
-    color: #c00c15;
+.vote:hover:not(.disabled) {
+    color: #0a4ea7;
+}
+mat-icon.disabled {
+    cursor: default;
+    color: rgb(150, 142, 142);
 }
 .btn {
     background: #E50914 !important;
@@ -107,4 +113,8 @@ li {
     color: #E50914 !important;
     cursor: pointer;
     margin-right: 20px;
+}
+.disabled {
+    color: gray;
+    cursor: default;
 }

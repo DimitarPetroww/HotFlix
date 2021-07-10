@@ -24,7 +24,7 @@ export class BrowseComponent implements OnInit {
       return this.movieService.loadNextMovies((this.page - 1) * 4)
     })).subscribe(movies => {
       this.movies = movies
-    }, (err) => this.error = err.errors.message)
+    }, (err) => this.error = err.error.message)
 
     this.movieService.loadAllMovies().subscribe(x => {
       this.pages = Array.from({ length: Math.ceil(x.length / 4) }, (v, i) => i + 1)

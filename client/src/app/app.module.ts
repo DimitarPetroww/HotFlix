@@ -26,6 +26,7 @@ import { MovieModule } from './movie/movie.module';
     SharedModule,
     UserModule,
     MovieModule,
+
   ],
   exports: [
   ],

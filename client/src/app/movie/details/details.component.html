@@ -48,12 +48,15 @@
                             <div class="comment-text-sm"><span>{{comment.message}}</span></div>
                             <div class="reply-section">
                                 <div class="d-flex flex-row align-items-center voting-icons">
-                                    <i *ngIf="comment.owner._id != user._id"
-                                        class="fa fa-sort-up fa-2x mt-3 hit-voting"></i>
-                                    <i *ngIf="comment.owner._id != user._id"
-                                        class="fa fa-sort-down fa-2x mb-3 hit-voting"></i>
+                                    <mat-icon class="vote" [class.disabled]="true"
+                                        *ngIf="comment.owner._id != user._id">thumb_up</mat-icon>
+
+                                    <mat-icon class="vote"
+                                        *ngIf="comment.owner._id != user._id">thumb_down</mat-icon>
+
                                     <span class="ml-2">{{comment.likes.length}}</span>
-                                    <mat-icon *ngIf="comment.owner._id == user._id" class="trashcan" (click)="deleteComment(comment._id)">delete</mat-icon>
+                                    <mat-icon *ngIf="comment.owner._id == user._id" class="trashcan"
+                                        (click)="deleteComment(comment._id)">delete</mat-icon>
                                 </div>
                             </div>
                         </li>
