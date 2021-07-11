@@ -12,18 +12,21 @@
                         <p>Author: {{movie.author}}</p>
                     </div>
                     <mat-card-actions>
-                        <a routerLink="/edit/1" class="orange" mat-button>
+                        <a routerLink="/edit/1" class="orange" mat-button *ngIf="movie.owner == user._id">
                             <mat-icon>edit</mat-icon>
                             Edit
                         </a>
-                        <a routerLink="/watch/1" class="red" mat-button>
+                        <a class="red" mat-button *ngIf="movie.owner == user._id">
                             <mat-icon>delete</mat-icon>
                             Delete
                         </a>
-                        <a routerLink="/watch/1" class="blue" mat-button>
-                            <mat-icon>thumb_up</mat-icon>
+                        <a class="favorite" mat-button *ngIf="!isLiked && movie.owner != user._id" (click)="likeMovie()">
+                            <mat-icon>favorite</mat-icon>
                             Like
                         </a>
+                        <span *ngIf="isLiked || movie.owner == user._id">
+                            <mat-icon class="likes">favorite</mat-icon> {{movie.likes.length}} likes
+                        </span>
                     </mat-card-actions>
                 </div>
                 <section>
@@ -48,10 +51,10 @@
                             <div class="comment-text-sm"><span>{{comment.message}}</span></div>
                             <div class="reply-section">
                                 <div class="d-flex flex-row align-items-center voting-icons">
-                                    <mat-icon class="vote" [class.disabled]="true"
+                                    <mat-icon class="vote" [class.disabled]="comment.isLiked" (click)="likeComment($event.target, comment._id)"
                                         *ngIf="comment.owner._id != user._id">thumb_up</mat-icon>
 
-                                    <mat-icon class="vote"
+                                    <mat-icon class="vote" [class.disabled]="!comment.isLiked" (click)="dislikeComment($event.target, comment._id)"
                                         *ngIf="comment.owner._id != user._id">thumb_down</mat-icon>
 
                                     <span class="ml-2">{{comment.likes.length}}</span>

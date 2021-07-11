@@ -16,16 +16,22 @@ section {
     text-decoration: none;
     color: white;
 }
-.blue {
-    background-color:#0778E7 !important;
+.favorite {
+    background-color:#FF516C !important;
+    color: white;
     text-decoration: none;
 }
 .red:hover {
     background-color: #ff000d !important
 }
-.blue:hover {
-    background-color:#0281ff !important;
+.favorite:hover {
+    background-color:#dd1331 !important;
     color: white;
+}
+.likes {
+    color: #FF516C;
+    position: relative;
+    top: 7px;
 }
 .comment {
     background: rgba(0, 0, 0, 0.5);

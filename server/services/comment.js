@@ -31,7 +31,24 @@ async function deleteComment(id) {
 
     return getComments(updated._id)
 }
+async function likeComment(commentId, movieId, user) {
+    const comment = await Comment.findById(commentId)
+    comment.likes.push(user._id)
+    await comment.save()
+
+    return getComments(movieId)
+}
+async function dislikeComment(commentId, movieId, user) {
+    const comment = await Comment.findById(commentId)
+    const index = comment.likes.findIndex(x=> x == user._id)
+    comment.likes.splice(index, 1)
+    await comment.save()
+
+    return getComments(movieId)
+}
 module.exports = {
     comment,
-    deleteComment
+    deleteComment,
+    likeComment,
+    dislikeComment
 }

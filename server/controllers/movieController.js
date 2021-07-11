@@ -52,6 +52,14 @@ router.post("/", isAuthenticated(), async (req, res) => {
     }
     res.json(data)
 })
+router.put("/like", isAuthenticated(), async (req, res) => {
+    const [movie, error] = await promise(movieService.likeMovie(req.body.movieId, req.user._id))
+    if (error) {
+        res.status(400)
+        return res.json({ message: error.message })
+    }
+    res.json(movie)
+})
 router.post("/comment", isAuthenticated(), async (req, res) => {
     const data = {
         message: req.body.message,
@@ -79,6 +87,21 @@ router.delete("/comment/:id", isAuthenticated(), async (req, res) => {
     }
     res.json(comments)
 })
-
+router.put("/comment/like", isAuthenticated(), async (req, res) => {
+    const [comments, error] = await promise(commentService.likeComment(req.body.commentId, req.body.movieId, req.user))
+    if (error) {
+        res.status(400)
+        return res.json({ message: error.message })
+    }
+    res.json(comments)
+})
+router.put("/comment/dislike", isAuthenticated(), async (req, res) => {
+    const [comments, error] = await promise(commentService.dislikeComment(req.body.commentId, req.body.movieId, req.user))
+    if (error) {
+        res.status(400)
+        return res.json({ message: error.message })
+    }
+    res.json(comments)
+})
 
 module.exports = router
