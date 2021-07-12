@@ -8,6 +8,8 @@ export interface IMovie {
     author: string
     description: string
     imageUrl: string
+    imageID: string,
+    trailerID: string
     trailerUrl: string,
     comments: IComment[],
     __v: number

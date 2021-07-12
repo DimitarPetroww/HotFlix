@@ -31,6 +31,8 @@ router.post("/", isAuthenticated(), async (req, res) => {
         imageUrl: req.body.imageUrl,
         genre: req.body.genre,
         author: req.body.author,
+        imageID: req.body.imageID,
+        trailerID: req.body.trailerID
     }
     if (Object.values(data).some(x => x == "")) {
         res.status(400)
@@ -51,6 +53,36 @@ router.post("/", isAuthenticated(), async (req, res) => {
         return res.json({ message: error.message })
     }
     res.json(data)
+})
+router.delete("/:id", async (req, res) => {
+    const [{ trailerID, imageID }, error] = await promise(movieService.deleteMovie(req.params.id))
+    if (error) {
+        res.status(400)
+        return res.json({ message: error.message })
+    }
+    cloudinary.uploader.destroy(imageID)
+    cloudinary.uploader.destroy(trailerID, { resource_type: "video" })
+
+
+})
+router.patch("/:id", async (req, res) => {
+    const data = {
+        name: req.body.name,
+        description: req.body.description,
+        genre: req.body.genre,
+        author: req.body.author,
+    }
+    if (Object.values(data).some(x => x == "")) {
+        res.status(400)
+        return res.json({ message: "All fields are required" })
+    }
+
+    const [movie, error] = await promise(movieService.editMovie(req.params.id, data))
+    if (error) {
+        res.status(400)
+        return res.json({ message: error.message })
+    }
+    res.json(movie)
 })
 router.put("/like", isAuthenticated(), async (req, res) => {
     const [movie, error] = await promise(movieService.likeMovie(req.body.movieId, req.user._id))

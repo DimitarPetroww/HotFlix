@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Params } from '@angular/router';
 import { Observable } from 'rxjs';
 import { IComment } from '../interfaces/comment';
 import { IMovie } from '../interfaces/movie';
@@ -21,6 +22,12 @@ export class MovieService {
   }
   createMovie(data: IMovie): Observable<IMovie> {
     return this.http.post<IMovie>("/api/movies", data, { withCredentials: true })
+  }
+  editMovie(id: string, data: IMovie) {
+    return this.http.patch<IMovie>("/api/movies/" + id, data, { withCredentials: true })
+  }
+  deleteMovie(id: string) {
+    return this.http.delete<IMovie>("/api/movies/" + id, { withCredentials: true })
   }
   likeMovie(movieId: string): Observable<IMovie> {
     return this.http.put<IMovie>("/api/movies/like", { movieId }, { withCredentials: true })

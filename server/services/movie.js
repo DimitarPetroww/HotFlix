@@ -26,6 +26,16 @@ async function create(data) {
 
     return movie
 }
+async function editMovie(movieId, data) {
+    const movie = await Movie.findById(movieId)
+
+    movie.author = data.author
+    movie.description = data.description
+    movie.name = data.name
+    movie.genre = data.genre
+
+    return movie.save()
+}
 async function likeMovie(movieId, userId) {
     const movie = await getById(movieId)
     const user = await User.findById(userId)
@@ -40,5 +50,6 @@ module.exports = {
     getById,
     create,
     getNext,
-    likeMovie
+    likeMovie,
+    editMovie
 }
