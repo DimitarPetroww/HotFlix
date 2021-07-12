@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { IComment } from 'src/app/interfaces/comment';
 import { IMovie } from 'src/app/interfaces/movie';
 import { IUser } from 'src/app/interfaces/user';
 import { MovieService } from 'src/app/services/movie.service';

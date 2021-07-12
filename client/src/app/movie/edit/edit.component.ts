@@ -23,10 +23,16 @@ export class EditComponent implements OnInit {
     this.route.params.pipe(switchMap(params => {
       this.movieId = params.id
       return this.movieService.loadMovieById(this.movieId)
-    })).subscribe(movie => {
-      this.data = movie
-      this.isLoading = false
-    })
+    })).subscribe(
+      movie => {
+        this.data = movie
+        this.isLoading = false
+      },
+      err => {
+        this.isLoading = false
+        timer(4000).subscribe(_ => this.error = undefined)
+        this.error = err.error.message
+      })
   }
   submitHandler(fV: IMovie): void {
     const data = {
@@ -37,15 +43,15 @@ export class EditComponent implements OnInit {
     }
     this.isLoading = true
     this.movieService.editMovie(this.movieId, data as IMovie)
-    .subscribe(
-      res => {
-        this.isLoading = false
-        this.router.navigate(["/details", this.movieId])
-      }, 
-      err => {
-        this.isLoading = false
-        timer(4000).subscribe(_ => this.error = undefined)
-        this.error = err.error.message
-      })
+      .subscribe(
+        res => {
+          this.isLoading = false
+          this.router.navigate(["/details", this.movieId])
+        },
+        err => {
+          this.isLoading = false
+          timer(4000).subscribe(_ => this.error = undefined)
+          this.error = err.error.message
+        })
   }
 }

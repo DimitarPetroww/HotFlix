@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { MovieService } from 'src/app/services/movie.service';
 import { IMovie } from "../../interfaces/movie"
@@ -22,9 +23,14 @@ export class BrowseComponent implements OnInit {
     this.route.queryParams.pipe(switchMap(params => {
       this.page = Number(params.page) || 1
       return this.movieService.loadNextMovies((this.page - 1) * 4)
-    })).subscribe(movies => {
-      this.movies = movies
-    }, (err) => this.error = err.error.message)
+    })).subscribe(
+      movies => {
+        this.movies = movies
+      },
+      err => {
+        timer(4000).subscribe(_ => this.error = undefined)
+        this.error = err.error.message
+      })
 
     this.movieService.loadAllMovies().subscribe(x => {
       this.pages = Array.from({ length: Math.ceil(x.length / 4) }, (v, i) => i + 1)

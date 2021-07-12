@@ -22,12 +22,9 @@ export class SideNavComponent implements OnInit {
   }
   logout(event): void {
     event.preventDefault()
-    this.userService.logout().subscribe({
-      next: () => {
-        this.sidenavClose.emit();
-        this.router.navigate(["/"])
-      },
-      error: (error: Error) => console.log(error.message)
-    })  
+    this.userService.logout().subscribe(() => {
+      this.sidenavClose.emit();
+      this.router.navigate(["/"])
+    })
   }
 }

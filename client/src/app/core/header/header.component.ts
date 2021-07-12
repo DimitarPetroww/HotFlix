@@ -23,11 +23,8 @@ export class HeaderComponent implements OnInit {
   }
   logout(event): void {
     event.preventDefault()
-    this.userService.logout().subscribe({
-      next: () => {
-        this.router.navigate(["/"])
-      },
-      error: (error: Error) => console.log(error.message)
-    })  
+    this.userService.logout().subscribe(res => {
+      this.router.navigate(["/"])
+    })
   }
 }
