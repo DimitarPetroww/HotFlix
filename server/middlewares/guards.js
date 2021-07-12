@@ -14,7 +14,19 @@ function isAuthenticated() {
         }
     }
 }
+function isOwner() {
+    return async (req, res, next) => {
+        if(req.movie.owner == req.user._id) {
+            next()
+        }else {
+            res.status(401)
+            res.json({ message: "No rights to modify" })
+        }
+    }
+}
+
 
 module.exports = {
-    isAuthenticated
+    isAuthenticated,
+    isOwner
 }

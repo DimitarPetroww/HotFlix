@@ -2,7 +2,8 @@ const express = require("express")
 const router = express.Router()
 const promise = require("../util/promise")
 const movieService = require("../services/movie")
-const { isAuthenticated } = require("../middlewares/guards")
+const { isAuthenticated, isOwner } = require("../middlewares/guards")
+const { preloadMovie } = require("../middlewares/preloads")
 const cloudinary = require("cloudinary").v2
 const commentService = require("../services/comment")
 
@@ -54,18 +55,18 @@ router.post("/", isAuthenticated(), async (req, res) => {
     }
     res.json(data)
 })
-router.delete("/:id", async (req, res) => {
-    const [{ trailerID, imageID }, error] = await promise(movieService.deleteMovie(req.params.id))
+router.delete("/:id", isAuthenticated(), preloadMovie(), isOwner(), async (req, res) => {
+    const [data, error] = await promise(movieService.deleteMovie(req.params.id))
     if (error) {
         res.status(400)
         return res.json({ message: error.message })
     }
-    cloudinary.uploader.destroy(imageID)
-    cloudinary.uploader.destroy(trailerID, { resource_type: "video" })
+    cloudinary.uploader.destroy(data.imageID)
+    cloudinary.uploader.destroy(data.trailerID, { resource_type: "video" })
 
-
+    res.json({})
 })
-router.patch("/:id", async (req, res) => {
+router.patch("/:id", isAuthenticated(), preloadMovie(), isOwner(),async (req, res) => {
     const data = {
         name: req.body.name,
         description: req.body.description,

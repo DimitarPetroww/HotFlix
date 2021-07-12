@@ -1,4 +1,4 @@
-const Movie = require("../models/Movie")  
+const Movie = require("../models/Movie")
 const User = require("../models/User")
 
 
@@ -7,9 +7,9 @@ function getAll() {
 }
 function getById(id) {
     return Movie.findById(id).populate({
-        path : 'comments',
-        populate : {
-          path : 'owner'
+        path: 'comments',
+        populate: {
+            path: 'owner'
         }
     })
 }
@@ -25,6 +25,18 @@ async function create(data) {
     await user.save()
 
     return movie
+}
+async function deleteMovie(movieId) {
+    const movie = await Movie.findById(movieId)
+    const user = await User.findById(movie.owner)
+
+    const index = user.ownedMovies.findIndex(x => x == movieId)
+    user.ownedMovies.splice(index, 1)
+
+    await Movie.deleteOne({ _id: movieId })
+
+
+    return { trailerID: movie.trailerID, imageID: movie.imageID }
 }
 async function editMovie(movieId, data) {
     const movie = await Movie.findById(movieId)
@@ -51,5 +63,6 @@ module.exports = {
     create,
     getNext,
     likeMovie,
-    editMovie
+    editMovie,
+    deleteMovie
 }
