@@ -16,6 +16,7 @@ export class BrowseComponent implements OnInit {
   pages: Number[]
   page: number
   models: String[]
+  isLoading: Boolean = false
   
   get error(): string {
     return this.alertService.error
@@ -23,14 +24,17 @@ export class BrowseComponent implements OnInit {
   constructor(private movieService: MovieService, private route: ActivatedRoute, private alertService: AlertService) { }
 
   ngOnInit(): void {
+    this.isLoading = true
     this.route.queryParams.pipe(switchMap(params => {
       this.page = Number(params.page) || 1
       return this.movieService.loadNextMovies((this.page - 1) * 4)
     })).subscribe(
       movies => {
+        this.isLoading = false
         this.movies = movies
       },
       err => {
+        this.isLoading = false
         this.alertService.reset(err.error.message)
       })
     this.movieService.loadAllMovies().subscribe(x => {
