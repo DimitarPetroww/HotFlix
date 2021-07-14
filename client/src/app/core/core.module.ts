@@ -10,6 +10,7 @@ import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../services/user.service';
+import { AlertService } from '../services/alert.service';
 
 
 @NgModule({
@@ -31,6 +32,6 @@ import { UserService } from '../services/user.service';
     HeaderComponent,
     SideNavComponent,
   ],
-  providers: [UserService]
+  providers: [UserService, AlertService]
 })
 export class CoreModule { }

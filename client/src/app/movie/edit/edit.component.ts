@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from "@angular/router"
 import { timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { IMovie } from 'src/app/interfaces/movie';
+import { AlertService } from 'src/app/services/alert.service';
 import { MovieService } from "../../services/movie.service"
 
 @Component({
@@ -12,11 +13,13 @@ import { MovieService } from "../../services/movie.service"
 })
 export class EditComponent implements OnInit {
   isLoading: Boolean = false
-  error: string
   movieId: string;
   data: IMovie;
 
-  constructor(private movieService: MovieService, private router: Router, private route: ActivatedRoute) { }
+  get error(): string {
+    return this.alertService.error
+  }
+  constructor(private movieService: MovieService, private router: Router, private route: ActivatedRoute, private alertService: AlertService) { }
 
   ngOnInit(): void {
     this.isLoading = true
@@ -30,8 +33,7 @@ export class EditComponent implements OnInit {
       },
       err => {
         this.isLoading = false
-        timer(4000).subscribe(_ => this.error = undefined)
-        this.error = err.error.message
+        this.alertService.reset(err.error.message)
       })
   }
   submitHandler(fV: IMovie): void {
@@ -50,8 +52,7 @@ export class EditComponent implements OnInit {
         },
         err => {
           this.isLoading = false
-          timer(4000).subscribe(_ => this.error = undefined)
-          this.error = err.error.message
+          this.alertService.reset(err.error.message)
         })
   }
 }

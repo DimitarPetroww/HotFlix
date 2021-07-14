@@ -4,6 +4,7 @@ import { timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { IMovie } from 'src/app/interfaces/movie';
 import { IUser } from 'src/app/interfaces/user';
+import { AlertService } from 'src/app/services/alert.service';
 import { MovieService } from 'src/app/services/movie.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -18,60 +19,78 @@ export class DetailsComponent implements OnInit {
   isLiked: boolean
   comments: any[]
   user: IUser
-  error: string
+  isLoading: Boolean = false
+  get error(): string {
+    return this.alertService.error
+  }
 
-  constructor(private route: ActivatedRoute, private movieService: MovieService, private userService: UserService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private movieService: MovieService, private userService: UserService, private alertService: AlertService, private router: Router) { }
 
   ngOnInit(): void {
+    this.isLoading = true
     this.userService.getUser().subscribe(x => {
       this.user = x
     }, this.errorHandler)
+
     this.route.params.pipe(switchMap(params => {
       this.movieId = params.id
       return this.movieService.loadMovieById(this.movieId)
     })).subscribe(movie => {
+      this.isLoading = false
       this.movie = movie
       this.isLiked = this.movie.likes.some(x => x == this.user._id)
-
       this.assignComments(movie.comments)
     }, this.errorHandler)
   }
   likeMovie() {
+    this.isLoading = true
     this.movieService.likeMovie(this.movieId).subscribe(x => {
+      this.isLoading = false
       this.movie = x
       this.isLiked = this.movie.likes.some(x => x == this.user._id)
     }, this.errorHandler)
   }
   deleteMovie() {
+    this.isLoading = true
     this.movieService.deleteMovie(this.movieId).subscribe(x => {
+      this.isLoading = false
       this.router.navigate(["/browse"])
     }, this.errorHandler)
   }
 
   comment(fV) {
+    this.isLoading = true
     Object.assign(fV, { movie: this.movieId })
     this.movieService.comment(fV).subscribe(x => {
+      this.isLoading = false
       this.assignComments(x)
     }, this.errorHandler)
   }
   deleteComment(commentId) {
+    this.isLoading = true
     this.movieService.deleteComment(commentId).subscribe(x => {
+      this.isLoading = false
       this.assignComments(x)
     }, this.errorHandler)
   }
   likeComment(target: HTMLElement, commentId) {
+
     if (target.classList.contains("disabled")) {
       return
     }
+    this.isLoading = true
     this.movieService.likeComment(commentId, this.movieId).subscribe(x => {
+      this.isLoading = false
       this.assignComments(x)
     }, this.errorHandler)
   }
   dislikeComment(target: HTMLElement, commentId) {
+    this.isLoading = true
     if (target.classList.contains("disabled")) {
       return
     }
     this.movieService.dislikeComment(commentId, this.movieId).subscribe(x => {
+      this.isLoading = false
       this.assignComments(x)
     }, this.errorHandler)
   }
@@ -80,7 +99,7 @@ export class DetailsComponent implements OnInit {
     this.comments.map(x => x.isLiked = x.likes.some((y: string) => y == this.user._id))
   }
   private errorHandler(err) {
-    timer(4000).subscribe(_ => this.error = undefined)
-    this.error = err.error.message
+    this.alertService.reset(err.error.message)
+    this.isLoading = false
   }
 }

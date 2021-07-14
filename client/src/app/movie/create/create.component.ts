@@ -4,6 +4,7 @@ import { IMovie } from 'src/app/interfaces/movie';
 import { MovieService } from 'src/app/services/movie.service';
 import { UploadService } from 'src/app/services/upload.service';
 import { timer } from "rxjs"
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-create',
@@ -16,11 +17,14 @@ export class CreateComponent implements OnInit {
   trailerNameAndSize: string = "Choose Movie Trailer under 100MB"
   imageFile: File = undefined
   trailerFile: File = undefined
-  error: String
   imgfileError: string
   trailerFileError: string
 
-  constructor(private movieService: MovieService, private uploadService: UploadService, private router: Router) { }
+  get error(): string {
+    return this.alertService.error
+  }
+
+  constructor(private movieService: MovieService, private uploadService: UploadService, private router: Router, private alertService: AlertService) { }
 
   ngOnInit(): void {
   }
@@ -47,8 +51,7 @@ export class CreateComponent implements OnInit {
         },
         err => {
           this.isLoading = false
-          timer(4000).subscribe(_ => this.error = undefined)
-          this.error = err.error.message
+          this.alertService.reset(err.error.message)
         })
     })
   }

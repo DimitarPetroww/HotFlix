@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { MovieService } from '../services/movie.service';
 import { UploadService } from '../services/upload.service';
 import { UserService } from '../services/user.service';
+import { AlertService } from '../services/alert.service';
 
 @NgModule({
   declarations: [DetailsComponent, CreateComponent, EditComponent],
@@ -25,6 +26,6 @@ import { UserService } from '../services/user.service';
     CreateComponent,
     EditComponent
   ],
-  providers: [MovieService, UploadService, UserService]
+  providers: [MovieService, UploadService, UserService, AlertService]
 })
 export class MovieModule { }

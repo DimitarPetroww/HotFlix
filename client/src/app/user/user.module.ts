@@ -10,6 +10,7 @@ import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { RouterModule } from '@angular/router';
+import { AlertService } from '../services/alert.service';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,6 @@ import { RouterModule } from '@angular/router';
   ],
   exports: [
   ],
-  providers: [UserService]
+  providers: [UserService, AlertService]
 })
 export class UserModule { }

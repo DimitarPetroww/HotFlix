@@ -1,5 +1,5 @@
 <app-alert *ngIf="error" [message]="error"></app-alert>
-
+<app-spinner *ngIf="isLoading"></app-spinner>
 <form action="" class="login-box" #f="ngForm" (ngSubmit)="submitHandler(f.value)">
     <h1>Login</h1>
     <div class="textbox">

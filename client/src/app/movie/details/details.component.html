@@ -1,4 +1,5 @@
 <app-alert *ngIf="error" [message]="error"></app-alert>
+<app-spinner *ngIf="isLoading"></app-spinner>
 <div class="content" *ngIf="movie">
     <div fxLayout="row wrap">
         <div fxFlex="100%">

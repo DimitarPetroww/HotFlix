@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { timer } from 'rxjs';
+import { AlertService } from 'src/app/services/alert.service';
 import { UserService } from 'src/app/services/user.service';
 import { ConfirmedValidator } from '../../shared/validators';
 
@@ -13,27 +14,32 @@ import { ConfirmedValidator } from '../../shared/validators';
 export class RegisterComponent implements OnInit {
 
   form: FormGroup
-  error: string
-  isLoading: boolean = true
+  isLoading: boolean = false
 
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
+  get error(): string {
+    return this.alertService.error
+  }
+
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private alertService: AlertService) {
     this.form = this.fb.group({
       email: ["", [Validators.required, Validators.pattern(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)]],
       username: ["", [Validators.required]],
       password: ["", [Validators.required]],
       repeatPassword: ["", [Validators.required]]
-    }, { validators: [ConfirmedValidator("password", "repeatPassword")]})
+    }, { validators: [ConfirmedValidator("password", "repeatPassword")] })
   }
-  ngOnInit () {
+  ngOnInit() {
 
   }
   submitHandler(): void {
+    this.isLoading = true
     this.userService.register(this.form.value).subscribe(res => {
-        this.router.navigate(["/browse"])
-      },
+      this.isLoading = false
+      this.router.navigate(["/browse"])
+    },
       err => {
-        timer(4000).subscribe(_ => this.error = undefined)
-        this.error = err.error.message
+        this.isLoading = false
+        this.alertService.reset(err.error.message)
       }
     )
   }

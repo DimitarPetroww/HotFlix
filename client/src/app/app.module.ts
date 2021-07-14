@@ -11,6 +11,7 @@ import { MovieService } from './services/movie.service';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
 import { MovieModule } from './movie/movie.module';
+import { AlertService } from './services/alert.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { MovieModule } from './movie/movie.module';
   ],
   exports: [
   ],
-  providers: [MovieService],
+  providers: [MovieService, AlertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

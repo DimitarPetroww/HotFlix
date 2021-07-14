@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import { AlertService } from 'src/app/services/alert.service';
 import { MovieService } from 'src/app/services/movie.service';
 import { IMovie } from "../../interfaces/movie"
 
@@ -15,9 +16,11 @@ export class BrowseComponent implements OnInit {
   pages: Number[]
   page: number
   models: String[]
-  error: string
-
-  constructor(private movieService: MovieService, private route: ActivatedRoute) { }
+  
+  get error(): string {
+    return this.alertService.error
+  }
+  constructor(private movieService: MovieService, private route: ActivatedRoute, private alertService: AlertService) { }
 
   ngOnInit(): void {
     this.route.queryParams.pipe(switchMap(params => {
@@ -28,10 +31,8 @@ export class BrowseComponent implements OnInit {
         this.movies = movies
       },
       err => {
-        timer(4000).subscribe(_ => this.error = undefined)
-        this.error = err.error.message
+        this.alertService.reset(err.error.message)
       })
-
     this.movieService.loadAllMovies().subscribe(x => {
       this.pages = Array.from({ length: Math.ceil(x.length / 4) }, (v, i) => i + 1)
     })

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { timer } from 'rxjs';
+import { AlertService } from 'src/app/services/alert.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,15 +11,23 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent {
   regex: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-  error: string
-  constructor(private userService: UserService, private router: Router) { }
+  isLoading: Boolean = false
+
+  get error(): string {
+    return this.alertService.error
+  }
+  constructor(private userService: UserService, private router: Router, private alertService: AlertService) { }
 
   submitHandler(fV: Object): void {
+    this.isLoading = true
     this.userService.login(fV).subscribe(
-      res=> this.router.navigate(["/browse"]),
+      res => {
+        this.isLoading = false
+        this.router.navigate(["/browse"])
+      },
       err => {
-        timer(4000).subscribe(_ => this.error = undefined)
-        this.error = err.error.message
+        this.isLoading = false
+        this.alertService.reset(err.error.message)
       }
     )
   }
