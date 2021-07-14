@@ -5,7 +5,7 @@ a {
 a:hover{
     cursor: pointer !important;
     text-decoration: none;
-    color:  #E50914 !important;
+    color:  #E50914;
 }
 .navigation-items{
     list-style-type: none;
@@ -13,7 +13,7 @@ a:hover{
     margin: 0;
 }
 .active {
-    color: #E50914;
+    color: #E50914 !important;
 }
 .toggle {
     color: #E50914 !important;
@@ -23,9 +23,4 @@ div > a {
 }
 mat-toolbar{
     background-color: #29282E;
-}
-@media(max-width: 959px){
-    mat-toolbar{
-        border-radius: 0px;
-    }
 }

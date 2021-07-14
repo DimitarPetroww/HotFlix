@@ -5,7 +5,8 @@ const allowed = [
     ".js",
     ".css",
     ".png",
-    ".jpg"
+    ".jpg",
+    ".ico"
 ];
 async function init() {
     const app = require("express")();
