@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
   templateUrl: './alert.component.html',
   styleUrls: ["./alert.component.css"]
 })
-export class AlertComponent {
+export class AlertComponent{
   @Input() message: String
 
   constructor() {

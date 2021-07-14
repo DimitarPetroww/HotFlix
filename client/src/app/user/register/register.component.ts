@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
 
   form: FormGroup
   error: string
-  isSubmited: boolean = false
+  isLoading: boolean = true
 
   constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
     this.form = this.fb.group({

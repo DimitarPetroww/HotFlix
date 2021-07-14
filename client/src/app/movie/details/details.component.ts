@@ -63,7 +63,6 @@ export class DetailsComponent implements OnInit {
     if (target.classList.contains("disabled")) {
       return
     }
-
     this.movieService.likeComment(commentId, this.movieId).subscribe(x => {
       this.assignComments(x)
     }, this.errorHandler)

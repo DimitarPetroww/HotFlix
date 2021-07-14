@@ -1,5 +1,5 @@
 <app-alert *ngIf="error" [message]="error"></app-alert>
-<!-- <button (click)="changeError()">asdadaasd</button> -->
+<app-spinner *ngIf="isLoading"></app-spinner>
 
 <form class="register-box" [formGroup]="form" (ngSubmit)="submitHandler()">
     <h1>Register</h1>
