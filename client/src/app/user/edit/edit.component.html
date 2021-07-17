@@ -1,0 +1,21 @@
+<!-- <app-alert *ngIf="error" [message]="error"></app-alert>
+<app-spinner *ngIf="isLoading"></app-spinner> -->
+
+<form class="register-box" #f="ngForm">
+    <h1>Edit Profile</h1>
+    <div class="textbox">
+        <p class="error" *ngIf="email.touched && email.errors?.required">
+            Email is required
+        </p>
+        <i class="fas fa-user"></i>
+        <input type="text" placeholder="Email" name="email" ngModel #email="ngModel" required>
+    </div>
+    <div class="textbox">
+        <p class="error" *ngIf="name.touched && name.errors?.required">
+            Name is required
+        </p>
+        <i class="fas fa-user-tie"></i>
+        <input type="text" placeholder="Username" name="username" ngModel #name="ngModel" required>
+    </div>
+    <input type="submit" class="btn" value="Edit" [disabled]="f.invalid">
+</form>

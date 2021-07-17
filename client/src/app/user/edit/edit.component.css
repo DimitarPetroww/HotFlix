@@ -1,4 +1,4 @@
-.login-box {
+.register-box {
     width: 280px;
     position: absolute;
     top: 50%;
@@ -6,11 +6,17 @@
     transform: translate(-50%, -50%);
     color: white;
 }
-.login-box h1 {
+.register-box h1 {
     font-size: 40px;
     border-bottom: 6px solid #E50914;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     padding: 13px 0;
+}
+.textbox > input.input-error {
+    border: 1px solid #E50914;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    box-shadow: none;
 }
 .textbox {
     width: 100%;
@@ -29,7 +35,7 @@
     border: none;
     outline: none;
     background: none;
-    color:white;
+    color: white;
     font-size: 18px;
     width: 80%;
     float: left;
@@ -44,21 +50,7 @@
     margin: 12 0;
     font-size: 18px;
 }
-::placeholder {
+::placeholder { 
     color:white;
     opacity: 1; 
-}
-.textbox .input-error {
-    border: 1px solid #E50914;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    box-shadow: none;
-}
-p.error {
-    text-align: left;
-    border-radius: 0.3em;
-    font-size: small;
-    color: red;
-    padding-top: 0;
-    margin-bottom: 2px;
 }

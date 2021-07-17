@@ -5,7 +5,7 @@ export interface IUser {
     email: string,
     username: string,
     hashedPassword: string,
-    likedMovie: IMovie[],
-    ownerMovies: IMovie[]
+    likedMovies: IMovie[],
+    ownedMovies: IMovie[]
     __v: number
 }

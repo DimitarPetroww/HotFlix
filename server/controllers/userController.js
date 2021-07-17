@@ -64,7 +64,12 @@ router.post("/logout",isAuthenticated(), async (req, res) => {
     res.json({})
 })
 router.get("/profile", isAuthenticated(), async (req, res) => {
-    res.json(req.user)
+    const [user, error] = await promise(userService.getUser(req.user._id))
+    if(error) {
+        res.status(400)
+        return res.json({ message: error.message })
+    }
+    res.json(user)
 })
 
 module.exports = router

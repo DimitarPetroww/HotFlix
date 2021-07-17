@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { timer } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { IMovie } from 'src/app/interfaces/movie';
 import { IUser } from 'src/app/interfaces/user';
@@ -66,14 +65,14 @@ export class DetailsComponent implements OnInit {
       this.assignComments(x)
     }, this.errorHandler)
   }
-  deleteComment(commentId) {
+  deleteComment(commentId: string) {
     this.isLoading = true
     this.movieService.deleteComment(commentId).subscribe(x => {
       this.isLoading = false
       this.assignComments(x)
     }, this.errorHandler)
   }
-  likeComment(target: HTMLElement, commentId) {
+  likeComment(target: HTMLElement, commentId: string) {
 
     if (target.classList.contains("disabled")) {
       return
@@ -84,7 +83,7 @@ export class DetailsComponent implements OnInit {
       this.assignComments(x)
     }, this.errorHandler)
   }
-  dislikeComment(target: HTMLElement, commentId) {
+  dislikeComment(target: HTMLElement, commentId: string) {
     this.isLoading = true
     if (target.classList.contains("disabled")) {
       return

@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { IUser } from 'src/app/interfaces/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,11 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
-  constructor() { }
+  user: IUser
+  isLoading: Boolean = false
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    
+    this.isLoading = true
+    this.userService.getUser().subscribe(x=> {
+      this.isLoading = false
+      this.user = x
+    })
   }
 
 }

@@ -1,38 +1,43 @@
-<!-- <app-alert message=""></app-alert> -->
-<div class="container-fluid py-5 mx-auto">
+<app-spinner *ngIf="isLoading"></app-spinner>
+<div class="container-fluid py-5 mx-auto" *ngIf="!isLoading">
     <div class="card py-4 px-4">
         <div class="row justify-content-start px-3">
-            <div class="image-bg mr-3"> <img class="user-img fit-image" src="https://toppng.com/uploads/preview/company-profile-video-production-icon-circle-11569043630cktfusgdy8.png"> </div>
+            <div class="image-bg mr-3"> <img class="user-img fit-image"
+                    src="https://toppng.com/uploads/preview/company-profile-video-production-icon-circle-11569043630cktfusgdy8.png">
+            </div>
             <div class="text-left">
-                <h2>Test</h2>
-                <h6>Test@abv.bg</h6>
+                <h2>{{user.username}}</h2>
+                <h6>{{user.email}}</h6>
             </div>
             <a class="btn btn-pink ml-auto">
-                <span><mat-icon>edit</mat-icon></span>
+                <span>
+                    <a routerLink="/user/edit">
+                        <mat-icon>edit</mat-icon>
+                    </a>
+                </span>
             </a>
         </div>
-        <div class="line">Liked Movies</div>
-        <div class="row d-flex justify-content-between px-3">
-            <div class="prod-bg text-center py-1">
-                <img class="prod-pic" src="https://upload.wikimedia.org/wikipedia/en/1/14/Tenet_movie_poster.jpg">
-            </div>
-            <div class="prod-bg text-center py-1"><img class="prod-pic" src="https://m.media-amazon.com/images/M/MV5BMjI0NmFkYzEtNzU2YS00NTg5LWIwYmMtNmQ1MTU0OGJjOTMxXkEyXkFqcGdeQXVyMjMxOTE0ODA@._V1_.jpg"></div>
-            <div class="prod-bg text-center py-1"><img class="prod-pic" src="https://m.media-amazon.com/images/M/MV5BMjI0NmFkYzEtNzU2YS00NTg5LWIwYmMtNmQ1MTU0OGJjOTMxXkEyXkFqcGdeQXVyMjMxOTE0ODA@._V1_.jpg"></div>
-            <div class="prod-bg text-center py-1"><img class="prod-pic" src="https://m.media-amazon.com/images/M/MV5BMjI0NmFkYzEtNzU2YS00NTg5LWIwYmMtNmQ1MTU0OGJjOTMxXkEyXkFqcGdeQXVyMjMxOTE0ODA@._V1_.jpg"></div>
+        <div class="line" *ngIf="user.likedMovies.length > 0">Liked Movies</div>
+        <div class="line" *ngIf="user.likedMovies.length == 0">No liked movies still...
+            <br>
+            <a routerLink="/browse">Go and find some!</a>
         </div>
-        <div class="line">My Movies</div>
-        <div class="row d-flex justify-content-between px-3">
-            <a class="prod-bg text-center py-1" href="#"><img class="prod-pic" src="https://upload.wikimedia.org/wikipedia/en/1/14/Tenet_movie_poster.jpg"></a>
-            <a class="prod-bg text-center py-1"  href="#"><img class="prod-pic" src="https://upload.wikimedia.org/wikipedia/en/1/14/Tenet_movie_poster.jpg"></a>
-            <a class="prod-bg text-center py-1"  href="#"><img class="prod-pic" src="https://upload.wikimedia.org/wikipedia/en/1/14/Tenet_movie_poster.jpg"></a>
-            <a class="prod-bg text-center py-1"  href="#"><img class="prod-pic" src="https://upload.wikimedia.org/wikipedia/en/1/14/Tenet_movie_poster.jpg"></a>
-            <a class="prod-bg text-center py-1"  href="#"><img class="prod-pic" src="https://upload.wikimedia.org/wikipedia/en/1/14/Tenet_movie_poster.jpg"></a>
-            <a class="prod-bg text-center py-1"  href="#"><img class="prod-pic" src="https://upload.wikimedia.org/wikipedia/en/1/14/Tenet_movie_poster.jpg"></a>
-            <a class="prod-bg text-center py-1"  href="#"><img class="prod-pic" src="https://upload.wikimedia.org/wikipedia/en/1/14/Tenet_movie_poster.jpg"></a>
-            <a class="prod-bg text-center py-1"  href="#"><img class="prod-pic" src="https://upload.wikimedia.org/wikipedia/en/1/14/Tenet_movie_poster.jpg"></a>
-            <a class="prod-bg text-center py-1"  href="#"><img class="prod-pic" src="https://upload.wikimedia.org/wikipedia/en/1/14/Tenet_movie_poster.jpg"></a>
-            <a class="prod-bg text-center py-1"  href="#"><img class="prod-pic" src="https://upload.wikimedia.org/wikipedia/en/1/14/Tenet_movie_poster.jpg"></a>
-            <a class="prod-bg text-center py-1"  href="#"><img class="prod-pic" src="https://upload.wikimedia.org/wikipedia/en/1/14/Tenet_movie_poster.jpg"></a>
+        <div class="row d-flex justify-content-between px-3" *ngIf="user.likedMovies.length > 0">
+            <a class="prod-bg text-center py-1" *ngFor="let movie of user.likedMovies"
+                [routerLink]="['/details', movie._id]">
+                <img class="prod-pic" [src]="movie.imageUrl">
+            </a>
+        </div>
+        <div class="line" *ngIf="user.ownedMovies.length > 0">My Movies</div>
+        <div class="line" *ngIf="user.ownedMovies.length == 0">No owned movies still...
+            <br>
+            <a routerLink="/browse">Go and find some!</a>
+        </div>
+        <div class="row d-flex justify-content-between px-3" *ngIf="user.ownedMovies.length > 0">
+            <a class="prod-bg text-center py-1" *ngFor="let movie of user.ownedMovies"
+                [routerLink]="['/details', movie._id]">
+                <img class="prod-pic" [src]="movie.imageUrl">
+            </a>
         </div>
     </div>
 </div>

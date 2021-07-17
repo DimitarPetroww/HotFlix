@@ -15,7 +15,11 @@ async function findUserByEmail(email) {
 
     return existing
 }
+async function getUser(id) {
+    return User.findById(id).populate("likedMovies").populate("ownedMovies")
+}
 module.exports = {
     createUser,
-    findUserByEmail
+    findUserByEmail,
+    getUser
 }
