@@ -5,28 +5,45 @@ import { BrowseComponent } from './core/browse/browse.component';
 import { HomeComponent } from './core/home/home.component';
 import { CreateComponent } from './movie/create/create.component';
 import { EditComponent } from './movie/edit/edit.component';
+import { AuthGuard } from './shared/auth.guard';
 
 const routes: Routes = [
   {
     path: "",
     pathMatch: "full",
-    component: HomeComponent
+    component: HomeComponent,
   },
   {
     path: "browse",
-    component: BrowseComponent
+    component: BrowseComponent,
+    canActivate: [AuthGuard],
+    data: {
+      isLogged: true
+    }
   },
   {
     path: "details/:id",
-    component: DetailsComponent
+    component: DetailsComponent,
+    canActivate: [AuthGuard],
+    data: {
+      isLogged: true
+    }
   },
   {
     path: "create",
-    component: CreateComponent
+    component: CreateComponent,
+    canActivate: [AuthGuard],
+    data: {
+      isLogged: true
+    }
   },
   {
     path: "edit/:id",
-    component: EditComponent
+    component: EditComponent,
+    canActivate: [AuthGuard],
+    data: {
+      isLogged: true
+    }
   },
   
 ];

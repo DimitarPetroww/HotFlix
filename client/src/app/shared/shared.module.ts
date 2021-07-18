@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { AlertComponent } from './alert/alert.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SpinnerComponent } from './spinner/spinner.component';
-
+import { UserService } from '../services/user.service';
 
 @NgModule({
   declarations: [
@@ -14,6 +14,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     CommonModule,
     NgbModule
   ],
-  exports: [AlertComponent, SpinnerComponent]
+  exports: [AlertComponent, SpinnerComponent],
+  providers: [UserService]
 })
 export class SharedModule { }
