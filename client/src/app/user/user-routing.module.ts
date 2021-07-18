@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthChildGuard } from '../shared/auth-child.guard';
+import { AuthGuard } from '../shared/auth.guard';
 import { EditComponent } from './edit/edit.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -9,7 +9,7 @@ import { RegisterComponent } from './register/register.component';
 const routes: Routes = [
     {
         path: "user",
-        canActivateChild: [AuthChildGuard],
+        canActivateChild: [AuthGuard],
         children: [
             {
                 path: "login",

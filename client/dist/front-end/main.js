@@ -830,6 +830,15 @@ class AuthGuard {
         this.router.navigate(["/"]);
         return false;
     }
+    canActivateChild(childRoute, state) {
+        const isLogged = childRoute.data.isLogged;
+        console.log(state.url);
+        if (typeof isLogged == "boolean" && isLogged == this.userService.isLogged) {
+            return true;
+        }
+        this.router.navigate(["/"]);
+        return false;
+    }
 }
 AuthGuard.ɵfac = function AuthGuard_Factory(t) { return new (t || AuthGuard)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_services_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"])); };
 AuthGuard.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: AuthGuard, factory: AuthGuard.ɵfac, providedIn: 'root' });
@@ -1079,6 +1088,52 @@ class MovieService {
 }
 MovieService.ɵfac = function MovieService_Factory(t) { return new (t || MovieService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"])); };
 MovieService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: MovieService, factory: MovieService.ɵfac });
+
+
+/***/ }),
+
+/***/ "I7PU":
+/*!***************************************!*\
+  !*** ./src/app/shared/owner.guard.ts ***!
+  \***************************************/
+/*! exports provided: OwnerGuard */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OwnerGuard", function() { return OwnerGuard; });
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs/operators */ "kU1M");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/user.service */ "qfBg");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "tyNb");
+
+
+
+
+class OwnerGuard {
+    constructor(userService, router) {
+        this.userService = userService;
+        this.router = router;
+    }
+    canActivate(route, state) {
+        const isLogged = route.data.isLogged;
+        const url = state.url;
+        const id = url.slice(url.lastIndexOf("/") + 1);
+        if (typeof isLogged == "boolean" && isLogged != this.userService.isLogged) {
+            this.router.navigate(["/"]);
+            return false;
+        }
+        const canActivate = this.userService.getUser().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_0__["map"])(x => {
+            const isOwner = x.ownedMovies.some(x => x._id == id);
+            if (!isOwner)
+                this.router.navigate(["/"]);
+            return isOwner;
+        }));
+        return canActivate;
+    }
+}
+OwnerGuard.ɵfac = function OwnerGuard_Factory(t) { return new (t || OwnerGuard)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_services_user_service__WEBPACK_IMPORTED_MODULE_2__["UserService"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"])); };
+OwnerGuard.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"]({ token: OwnerGuard, factory: OwnerGuard.ɵfac, providedIn: 'root' });
 
 
 /***/ }),
@@ -1865,7 +1920,7 @@ AlertComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCom
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UserRoutingModule", function() { return UserRoutingModule; });
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/router */ "tyNb");
-/* harmony import */ var _shared_auth_child_guard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/auth-child.guard */ "ww7B");
+/* harmony import */ var _shared_auth_guard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../shared/auth.guard */ "Cp0R");
 /* harmony import */ var _edit_edit_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit/edit.component */ "3a9W");
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./login/login.component */ "+rn0");
 /* harmony import */ var _profile_profile_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./profile/profile.component */ "D5oR");
@@ -1882,7 +1937,7 @@ __webpack_require__.r(__webpack_exports__);
 const routes = [
     {
         path: "user",
-        canActivateChild: [_shared_auth_child_guard__WEBPACK_IMPORTED_MODULE_1__["AuthChildGuard"]],
+        canActivateChild: [_shared_auth_guard__WEBPACK_IMPORTED_MODULE_1__["AuthGuard"]],
         children: [
             {
                 path: "login",
@@ -2827,7 +2882,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _movie_create_create_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./movie/create/create.component */ "Tsbi");
 /* harmony import */ var _movie_edit_edit_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./movie/edit/edit.component */ "LJYf");
 /* harmony import */ var _shared_auth_guard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./shared/auth.guard */ "Cp0R");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _shared_owner_guard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./shared/owner.guard */ "I7PU");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
 
 
 
@@ -2870,7 +2927,7 @@ const routes = [
     {
         path: "edit/:id",
         component: _movie_edit_edit_component__WEBPACK_IMPORTED_MODULE_5__["EditComponent"],
-        canActivate: [_shared_auth_guard__WEBPACK_IMPORTED_MODULE_6__["AuthGuard"]],
+        canActivate: [_shared_owner_guard__WEBPACK_IMPORTED_MODULE_7__["OwnerGuard"]],
         data: {
             isLogged: true
         }
@@ -2879,45 +2936,9 @@ const routes = [
 class AppRoutingModule {
 }
 AppRoutingModule.ɵfac = function AppRoutingModule_Factory(t) { return new (t || AppRoutingModule)(); };
-AppRoutingModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵdefineNgModule"]({ type: AppRoutingModule });
-AppRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵdefineInjector"]({ imports: [[_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRoot(routes)], _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_7__["ɵɵsetNgModuleScope"](AppRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] }); })();
-
-
-/***/ }),
-
-/***/ "ww7B":
-/*!********************************************!*\
-  !*** ./src/app/shared/auth-child.guard.ts ***!
-  \********************************************/
-/*! exports provided: AuthChildGuard */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthChildGuard", function() { return AuthChildGuard; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/user.service */ "qfBg");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "tyNb");
-
-
-
-class AuthChildGuard {
-    constructor(userService, router) {
-        this.userService = userService;
-        this.router = router;
-    }
-    canActivateChild(childRoute, state) {
-        const isLogged = childRoute.data.isLogged;
-        if (typeof isLogged == "boolean" && isLogged == this.userService.isLogged) {
-            return true;
-        }
-        this.router.navigate(["/"]);
-        return false;
-    }
-}
-AuthChildGuard.ɵfac = function AuthChildGuard_Factory(t) { return new (t || AuthChildGuard)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_services_user_service__WEBPACK_IMPORTED_MODULE_1__["UserService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"])); };
-AuthChildGuard.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: AuthChildGuard, factory: AuthChildGuard.ɵfac, providedIn: 'root' });
+AppRoutingModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵdefineNgModule"]({ type: AppRoutingModule });
+AppRoutingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵdefineInjector"]({ imports: [[_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"].forRoot(routes)], _angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_8__["ɵɵsetNgModuleScope"](AppRoutingModule, { imports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]], exports: [_angular_router__WEBPACK_IMPORTED_MODULE_0__["RouterModule"]] }); })();
 
 
 /***/ }),

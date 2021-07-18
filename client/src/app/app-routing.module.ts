@@ -6,6 +6,7 @@ import { HomeComponent } from './core/home/home.component';
 import { CreateComponent } from './movie/create/create.component';
 import { EditComponent } from './movie/edit/edit.component';
 import { AuthGuard } from './shared/auth.guard';
+import { OwnerGuard } from './shared/owner.guard';
 
 const routes: Routes = [
   {
@@ -40,7 +41,7 @@ const routes: Routes = [
   {
     path: "edit/:id",
     component: EditComponent,
-    canActivate: [AuthGuard],
+    canActivate: [OwnerGuard],
     data: {
       isLogged: true
     }
