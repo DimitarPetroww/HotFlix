@@ -1,21 +1,28 @@
-<!-- <app-alert *ngIf="error" [message]="error"></app-alert>
-<app-spinner *ngIf="isLoading"></app-spinner> -->
+<app-alert *ngIf="error" [message]="error"></app-alert>
+<app-spinner *ngIf="isLoading"></app-spinner> 
 
-<form class="register-box" #f="ngForm">
+<form class="register-box" #f="ngForm" (ngSubmit)="submitHandler(f.value)" *ngIf="!isLoading">
     <h1>Edit Profile</h1>
     <div class="textbox">
         <p class="error" *ngIf="email.touched && email.errors?.required">
             Email is required
         </p>
         <i class="fas fa-user"></i>
-        <input type="text" placeholder="Email" name="email" ngModel #email="ngModel" required>
+        <input type="text" placeholder="Email" name="email" ngModel #email="ngModel" required [class.input-error]="email.touched && email.errors" [(ngModel)]="user.email">
     </div>
     <div class="textbox">
         <p class="error" *ngIf="name.touched && name.errors?.required">
             Name is required
         </p>
         <i class="fas fa-user-tie"></i>
-        <input type="text" placeholder="Username" name="username" ngModel #name="ngModel" required>
+        <input type="text" placeholder="Username" name="username" ngModel #name="ngModel" required [class.input-error]="name.touched && name.errors" [(ngModel)]="user.username">
+    </div>
+    <div class="textbox">
+        <p class="error" *ngIf="password.touched && password.errors?.required">
+            Confirm Password is required
+        </p>
+        <i class="fas fa-lock"></i>
+        <input type="text" placeholder="Confirm Password" name="confirmPassword" ngModel #password="ngModel" required [class.input-error]="password.touched && password.errors">
     </div>
     <input type="submit" class="btn" value="Edit" [disabled]="f.invalid">
 </form>

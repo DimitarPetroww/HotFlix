@@ -50,6 +50,14 @@
     margin: 12 0;
     font-size: 18px;
 }
+p.error {
+    text-align: left;
+    border-radius: 0.3em;
+    font-size: small;
+    color: red;
+    padding-top: 0;
+    margin-bottom: 2px;
+}
 ::placeholder { 
     color:white;
     opacity: 1; 

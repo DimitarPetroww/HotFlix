@@ -1,3 +1,4 @@
+<app-alert *ngIf="error" [message]="error"></app-alert>
 <app-spinner *ngIf="isLoading"></app-spinner>
 <div class="container-fluid py-5 mx-auto" *ngIf="!isLoading">
     <div class="card py-4 px-4">
@@ -9,11 +10,9 @@
                 <h2>{{user.username}}</h2>
                 <h6>{{user.email}}</h6>
             </div>
-            <a class="btn btn-pink ml-auto">
+            <a class="btn btn-pink ml-auto" routerLink="/user/edit">
                 <span>
-                    <a routerLink="/user/edit">
-                        <mat-icon>edit</mat-icon>
-                    </a>
+                    <mat-icon>edit</mat-icon>
                 </span>
             </a>
         </div>

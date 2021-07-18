@@ -18,8 +18,17 @@ async function findUserByEmail(email) {
 async function getUser(id) {
     return User.findById(id).populate("likedMovies").populate("ownedMovies")
 }
+async function editUser(id, email, username) {
+    const user = await User.findById(id)
+
+    user.email = email
+    user.username = username
+
+    return user.save()
+}
 module.exports = {
     createUser,
     findUserByEmail,
-    getUser
+    getUser,
+    editUser
 }

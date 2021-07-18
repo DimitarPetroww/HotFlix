@@ -33,10 +33,11 @@ export class RegisterComponent implements OnInit {
   }
   submitHandler(): void {
     this.isLoading = true
-    this.userService.register(this.form.value).subscribe(res => {
+    this.userService.register(this.form.value).subscribe(
+      res => {
       this.isLoading = false
       this.router.navigate(["/browse"])
-    },
+      },
       err => {
         this.isLoading = false
         this.alertService.reset(err.error.message)

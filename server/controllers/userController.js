@@ -58,18 +58,36 @@ router.post("/login", async (req, res) => {
 
     res.json(user)
 })
-router.post("/logout",isAuthenticated(), async (req, res) => {
+router.post("/logout", isAuthenticated(), async (req, res) => {
     res.clearCookie(config.COOKIE_NAME)
 
     res.json({})
 })
 router.get("/profile", isAuthenticated(), async (req, res) => {
     const [user, error] = await promise(userService.getUser(req.user._id))
-    if(error) {
+    if (error) {
         res.status(400)
         return res.json({ message: error.message })
     }
     res.json(user)
+})
+router.post("/edit", isAuthenticated(), async (req, res) => {
+    const [user, error] = await promise(userService.findUserByEmail(req.body.email))
+    if (error) {
+        res.status(400)
+        return res.json({ message: error.message })
+    }
+    const isMatch = await bcrypt.compare(req.body.confirmPassword, user.hashedPassword)
+    if (!isMatch) {
+        res.status(400)
+        return res.json({ message: "Incorrect Password" })
+    }
+    const [newUser, err] = await promise(userService.editUser(user._id, req.body.email, req.body.username))
+    if(err) {
+        res.status(400)
+        return res.json({ message: err.message })
+    }
+    res.json(newUser)
 })
 
 module.exports = router

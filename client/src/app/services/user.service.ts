@@ -27,6 +27,9 @@ export class UserService {
     }))
   }
   getUser(): Observable<IUser> {
-    return this.http.get<IUser>("/api/user/profile")
+    return this.http.get<IUser>("/api/user/profile", { withCredentials: true })
+  }
+  editUser(data: Object): Observable<IUser> {
+    return this.http.post<IUser>("/api/user/edit", data, { withCredentials: true })
   }
 }

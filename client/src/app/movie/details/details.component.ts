@@ -27,11 +27,10 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoading = true
-    this.userService.getUser().subscribe(x => {
+    this.userService.getUser().pipe(switchMap((x: IUser) => {
       this.user = x
-    }, this.errorHandler)
-
-    this.route.params.pipe(switchMap(params => {
+      return this.route.params
+    })).pipe(switchMap(params => {
       this.movieId = params.id
       return this.movieService.loadMovieById(this.movieId)
     })).subscribe(movie => {
@@ -40,6 +39,7 @@ export class DetailsComponent implements OnInit {
       this.isLiked = this.movie.likes.some(x => x == this.user._id)
       this.assignComments(movie.comments)
     }, this.errorHandler)
+
   }
   likeMovie() {
     this.isLoading = true
