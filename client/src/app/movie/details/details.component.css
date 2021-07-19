@@ -120,7 +120,9 @@ li {
     cursor: pointer;
     margin-right: 20px;
 }
-.disabled {
-    color: gray;
-    cursor: default;
+.comment-likes {
+    font-size: 18px;
+    color: #2D88FF;
+    position: relative;
+    top: 2px;
 }

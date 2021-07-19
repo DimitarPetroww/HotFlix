@@ -11,6 +11,7 @@ import { SharedModule } from './shared/shared.module';
 import { AlertService } from './services/alert.service';
 import { UploadService } from './services/upload.service';
 import { UserService } from './services/user.service';
+import { FormBuilder } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { UserService } from './services/user.service';
     MaterialModule,
     SharedModule,
   ],
-  providers: [MovieService, AlertService, UploadService, UserService],
+  providers: [MovieService, AlertService, UploadService, UserService, FormBuilder],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
