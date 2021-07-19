@@ -48,7 +48,7 @@ export class EditComponent implements OnInit {
       .subscribe(
         res => {
           this.isLoading = false
-          this.router.navigate(["/details", this.movieId])
+          this.router.navigate(["/movies/details", this.movieId])
         },
         err => {
           this.isLoading = false

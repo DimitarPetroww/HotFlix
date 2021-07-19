@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../services/user.service';
 import { AlertService } from '../services/alert.service';
+import { MovieRoutingModule } from '../movie/movie-routing.module';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { AlertService } from '../services/alert.service';
     MaterialModule,
     RouterModule,
     UserRoutingModule,
+    MovieRoutingModule,
     SharedModule,
     NgbModule
   ],

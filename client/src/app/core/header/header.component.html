@@ -7,7 +7,7 @@
     <div fxFlex fxLayout fxLayoutAlign="start" fxHide.xs>
         <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="!isLogged">HOME</a>
         <a routerLink="/browse" routerLinkActive="active" *ngIf="isLogged">BROWSE</a>
-        <a routerLink="/create" routerLinkActive="active" *ngIf="isLogged">CREATE</a>
+        <a routerLink="/movies/create" routerLinkActive="active" *ngIf="isLogged">CREATE</a>
     </div>
     <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
         <ul fxLayout fxLayoutGap="15px" class="navigation-items">

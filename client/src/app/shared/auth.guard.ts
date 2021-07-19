@@ -24,7 +24,6 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const isLogged = childRoute.data.isLogged
-    console.log(state.url);
   
     if (typeof isLogged == "boolean" && isLogged == this.userService.isLogged) {
       return true

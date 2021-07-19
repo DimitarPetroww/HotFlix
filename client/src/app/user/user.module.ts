@@ -8,9 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UserService } from '../services/user.service';
 import { RouterModule } from '@angular/router';
-import { AlertService } from '../services/alert.service';
 import { EditComponent } from './edit/edit.component';
 
 @NgModule({
@@ -30,8 +28,5 @@ import { EditComponent } from './edit/edit.component';
     FormsModule,
     RouterModule
   ],
-  exports: [
-  ],
-  providers: [UserService, AlertService]
 })
 export class UserModule { }

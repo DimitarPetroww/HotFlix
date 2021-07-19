@@ -21,11 +21,5 @@ import { AlertService } from '../services/alert.service';
     RouterModule,
     FormsModule,
   ],
-  exports: [
-    DetailsComponent,
-    CreateComponent,
-    EditComponent
-  ],
-  providers: [MovieService, UploadService, UserService, AlertService]
 })
 export class MovieModule { }

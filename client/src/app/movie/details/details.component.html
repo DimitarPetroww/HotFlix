@@ -14,7 +14,7 @@
                         <p>Author: {{movie.author}}</p>
                     </div>
                     <mat-card-actions>
-                        <a [routerLink]="['/edit', movieId]" class="orange" mat-button *ngIf="movie.owner == user._id">
+                        <a [routerLink]="['/movies/edit', movieId]" class="orange" mat-button *ngIf="movie.owner == user._id">
                             <mat-icon>edit</mat-icon>
                             Edit
                         </a>

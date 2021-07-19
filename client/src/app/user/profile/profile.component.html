@@ -23,7 +23,7 @@
         </div>
         <div class="row d-flex justify-content-between px-3" *ngIf="user.likedMovies.length > 0">
             <a class="prod-bg text-center py-1" *ngFor="let movie of user.likedMovies"
-                [routerLink]="['/details', movie._id]">
+                [routerLink]="['/movies/details', movie._id]">
                 <img class="prod-pic" [src]="movie.imageUrl">
             </a>
         </div>
@@ -34,7 +34,7 @@
         </div>
         <div class="row d-flex justify-content-between px-3" *ngIf="user.ownedMovies.length > 0">
             <a class="prod-bg text-center py-1" *ngFor="let movie of user.ownedMovies"
-                [routerLink]="['/details', movie._id]">
+                [routerLink]="['/movies/details', movie._id]">
                 <img class="prod-pic" [src]="movie.imageUrl">
             </a>
         </div>

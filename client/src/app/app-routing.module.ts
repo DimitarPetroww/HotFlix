@@ -1,12 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DetailsComponent } from './movie/details/details.component';
 import { BrowseComponent } from './core/browse/browse.component';
 import { HomeComponent } from './core/home/home.component';
-import { CreateComponent } from './movie/create/create.component';
-import { EditComponent } from './movie/edit/edit.component';
 import { AuthGuard } from './shared/auth.guard';
-import { OwnerGuard } from './shared/owner.guard';
+
 
 const routes: Routes = [
   {
@@ -23,30 +20,13 @@ const routes: Routes = [
     }
   },
   {
-    path: "details/:id",
-    component: DetailsComponent,
-    canActivate: [AuthGuard],
-    data: {
-      isLogged: true
-    }
+    path: "user",
+    loadChildren: () => import("./user/user.module").then(m=> m.UserModule)
   },
   {
-    path: "create",
-    component: CreateComponent,
-    canActivate: [AuthGuard],
-    data: {
-      isLogged: true
-    }
+    path: "movies",
+    loadChildren: () => import("./movie/movie.module").then(m=> m.MovieModule)
   },
-  {
-    path: "edit/:id",
-    component: EditComponent,
-    canActivate: [OwnerGuard],
-    data: {
-      isLogged: true
-    }
-  },
-  
 ];
 
 @NgModule({
