@@ -7,10 +7,6 @@ import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { MovieService } from '../services/movie.service';
-import { UploadService } from '../services/upload.service';
-import { UserService } from '../services/user.service';
-import { AlertService } from '../services/alert.service';
 
 @NgModule({
   declarations: [DetailsComponent, CreateComponent, EditComponent],

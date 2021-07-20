@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '../shared/auth.guard';
-import { OwnerGuard } from '../shared/owner.guard';
+import { AuthGuard } from '../core/auth.guard';
+import { OwnerGuard } from '../core/owner.guard';
 import { CreateComponent } from './create/create.component';
 import { DetailsComponent } from './details/details.component';
 import { EditComponent } from './edit/edit.component';

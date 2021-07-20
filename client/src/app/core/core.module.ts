@@ -13,6 +13,8 @@ import { UserService } from '../services/user.service';
 import { AlertService } from '../services/alert.service';
 import { MovieRoutingModule } from '../movie/movie-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { OwnerGuard } from './owner.guard';
+import { AuthGuard } from './auth.guard';
 
 
 @NgModule({
@@ -36,6 +38,6 @@ import { NotFoundComponent } from './not-found/not-found.component';
     SideNavComponent,
     NotFoundComponent
   ],
-  providers: [UserService, AlertService]
+  providers: [UserService, AlertService, OwnerGuard, AuthGuard]
 })
 export class CoreModule { }

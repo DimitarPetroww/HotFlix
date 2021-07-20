@@ -14,7 +14,6 @@ import { UserService } from '../services/user.service';
     CommonModule,
     NgbModule
   ],
-  exports: [AlertComponent, SpinnerComponent],
-  providers: [UserService]
+  exports: [AlertComponent, SpinnerComponent]
 })
 export class SharedModule { }

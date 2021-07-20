@@ -3,9 +3,7 @@ import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterSt
 import { Observable } from 'rxjs';
 import { UserService } from '../services/user.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthGuard implements CanActivate, CanActivateChild {
   constructor(private userService: UserService, private router: Router) { }
 
@@ -17,7 +15,6 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     if (typeof isLogged == "boolean" && isLogged == this.userService.isLogged) {
       return true
     }
-    this.router.navigate(["/"])
     return false
   }
   canActivateChild(

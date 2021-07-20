@@ -4,9 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { UserService } from '../services/user.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class OwnerGuard implements CanActivate {
 
   constructor(private userService: UserService, private router: Router) { }
