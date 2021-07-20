@@ -10,6 +10,7 @@ import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { EditComponent } from './edit/edit.component';
+import { UserRoutingModule } from './user-routing.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { EditComponent } from './edit/edit.component';
     NgbModule,
     MaterialModule,
     ReactiveFormsModule,
+    UserRoutingModule,
     FormsModule,
     RouterModule
   ],

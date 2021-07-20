@@ -8,27 +8,28 @@ import { EditComponent } from './edit/edit.component';
 
 const routes: Routes = [
     {
-        path: "movies",
-        canActivateChild: [AuthGuard],
-        children: [
-            {
-                path: "details/:id",
-                component: DetailsComponent,
-                data: {
-                    isLogged: true
-                }
-            },
-            {
-                path: "create",
-                component: CreateComponent,
-                data: {
-                    isLogged: true
-                }
-            },
-        ]
+        path: "",
+        pathMatch: "full",
+        redirectTo: "/404"
     },
     {
-        path: "movies/edit/:id",
+        path: "details/:id",
+        component: DetailsComponent,
+        canActivate: [AuthGuard],
+        data: {
+            isLogged: true
+        }
+    },
+    {
+        path: "create",
+        component: CreateComponent,
+        canActivate: [AuthGuard],
+        data: {
+            isLogged: true
+        }
+    },
+    {
+        path: "edit/:id",
         component: EditComponent,
         canActivate: [OwnerGuard],
         data: {

@@ -7,6 +7,7 @@ import { CreateComponent } from './create/create.component';
 import { EditComponent } from './edit/edit.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { MovieRoutingModule } from './movie-routing.module';
 
 @NgModule({
   declarations: [DetailsComponent, CreateComponent, EditComponent],
@@ -16,6 +17,7 @@ import { FormsModule } from '@angular/forms';
     SharedModule,
     RouterModule,
     FormsModule,
+    MovieRoutingModule
   ],
 })
 export class MovieModule { }

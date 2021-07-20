@@ -1474,27 +1474,28 @@ __webpack_require__.r(__webpack_exports__);
 
 const routes = [
     {
-        path: "movies",
-        canActivateChild: [_core_auth_guard__WEBPACK_IMPORTED_MODULE_1__["AuthGuard"]],
-        children: [
-            {
-                path: "details/:id",
-                component: _details_details_component__WEBPACK_IMPORTED_MODULE_4__["DetailsComponent"],
-                data: {
-                    isLogged: true
-                }
-            },
-            {
-                path: "create",
-                component: _create_create_component__WEBPACK_IMPORTED_MODULE_3__["CreateComponent"],
-                data: {
-                    isLogged: true
-                }
-            },
-        ]
+        path: "",
+        pathMatch: "full",
+        redirectTo: "/404"
     },
     {
-        path: "movies/edit/:id",
+        path: "details/:id",
+        component: _details_details_component__WEBPACK_IMPORTED_MODULE_4__["DetailsComponent"],
+        canActivate: [_core_auth_guard__WEBPACK_IMPORTED_MODULE_1__["AuthGuard"]],
+        data: {
+            isLogged: true
+        }
+    },
+    {
+        path: "create",
+        component: _create_create_component__WEBPACK_IMPORTED_MODULE_3__["CreateComponent"],
+        canActivate: [_core_auth_guard__WEBPACK_IMPORTED_MODULE_1__["AuthGuard"]],
+        data: {
+            isLogged: true
+        }
+    },
+    {
+        path: "edit/:id",
         component: _edit_edit_component__WEBPACK_IMPORTED_MODULE_5__["EditComponent"],
         canActivate: [_core_owner_guard__WEBPACK_IMPORTED_MODULE_2__["OwnerGuard"]],
         data: {
@@ -1538,6 +1539,7 @@ class AuthGuard {
         if (typeof isLogged == "boolean" && isLogged == this.userService.isLogged) {
             return true;
         }
+        this.router.navigate(["/"]);
         return false;
     }
     canActivateChild(childRoute, state) {
@@ -1964,38 +1966,41 @@ __webpack_require__.r(__webpack_exports__);
 
 const routes = [
     {
-        path: "user",
-        canActivateChild: [_core_auth_guard__WEBPACK_IMPORTED_MODULE_1__["AuthGuard"]],
-        children: [
-            {
-                path: "login",
-                component: _login_login_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"],
-                data: {
-                    isLogged: false
-                }
-            },
-            {
-                path: "register",
-                component: _register_register_component__WEBPACK_IMPORTED_MODULE_5__["RegisterComponent"],
-                data: {
-                    isLogged: false
-                }
-            },
-            {
-                path: "profile",
-                component: _profile_profile_component__WEBPACK_IMPORTED_MODULE_4__["ProfileComponent"],
-                data: {
-                    isLogged: true
-                }
-            },
-            {
-                path: "edit",
-                component: _edit_edit_component__WEBPACK_IMPORTED_MODULE_2__["EditComponent"],
-                data: {
-                    isLogged: true
-                }
-            }
-        ]
+        path: "",
+        pathMatch: "full",
+        redirectTo: "/404"
+    },
+    {
+        path: "login",
+        component: _login_login_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"],
+        canActivate: [_core_auth_guard__WEBPACK_IMPORTED_MODULE_1__["AuthGuard"]],
+        data: {
+            isLogged: false
+        }
+    },
+    {
+        path: "register",
+        component: _register_register_component__WEBPACK_IMPORTED_MODULE_5__["RegisterComponent"],
+        canActivate: [_core_auth_guard__WEBPACK_IMPORTED_MODULE_1__["AuthGuard"]],
+        data: {
+            isLogged: false
+        }
+    },
+    {
+        path: "profile",
+        component: _profile_profile_component__WEBPACK_IMPORTED_MODULE_4__["ProfileComponent"],
+        canActivate: [_core_auth_guard__WEBPACK_IMPORTED_MODULE_1__["AuthGuard"]],
+        data: {
+            isLogged: true
+        }
+    },
+    {
+        path: "edit",
+        component: _edit_edit_component__WEBPACK_IMPORTED_MODULE_2__["EditComponent"],
+        canActivate: [_core_auth_guard__WEBPACK_IMPORTED_MODULE_1__["AuthGuard"]],
+        data: {
+            isLogged: true
+        }
     }
 ];
 class UserRoutingModule {
@@ -2745,7 +2750,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _not_found_not_found_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./not-found/not-found.component */ "6nXq");
 /* harmony import */ var _owner_guard__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./owner.guard */ "TD0h");
 /* harmony import */ var _auth_guard__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./auth.guard */ "RBmT");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../app-routing.module */ "vY5A");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
 
 
 
@@ -2765,16 +2772,17 @@ __webpack_require__.r(__webpack_exports__);
 class CoreModule {
 }
 CoreModule.ɵfac = function CoreModule_Factory(t) { return new (t || CoreModule)(); };
-CoreModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_15__["ɵɵdefineNgModule"]({ type: CoreModule });
-CoreModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_15__["ɵɵdefineInjector"]({ providers: [_services_user_service__WEBPACK_IMPORTED_MODULE_9__["UserService"], _services_alert_service__WEBPACK_IMPORTED_MODULE_10__["AlertService"], _owner_guard__WEBPACK_IMPORTED_MODULE_13__["OwnerGuard"], _auth_guard__WEBPACK_IMPORTED_MODULE_14__["AuthGuard"]], imports: [[
+CoreModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_16__["ɵɵdefineNgModule"]({ type: CoreModule });
+CoreModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_16__["ɵɵdefineInjector"]({ providers: [_services_user_service__WEBPACK_IMPORTED_MODULE_9__["UserService"], _services_alert_service__WEBPACK_IMPORTED_MODULE_10__["AlertService"], _owner_guard__WEBPACK_IMPORTED_MODULE_13__["OwnerGuard"], _auth_guard__WEBPACK_IMPORTED_MODULE_14__["AuthGuard"]], imports: [[
             _angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"],
             _material_material_module__WEBPACK_IMPORTED_MODULE_3__["MaterialModule"],
             _user_user_routing_module__WEBPACK_IMPORTED_MODULE_5__["UserRoutingModule"],
             _movie_movie_routing_module__WEBPACK_IMPORTED_MODULE_11__["MovieRoutingModule"],
+            _app_routing_module__WEBPACK_IMPORTED_MODULE_15__["AppRoutingModule"],
             _shared_shared_module__WEBPACK_IMPORTED_MODULE_6__["SharedModule"],
             _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_8__["NgbModule"]
         ]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_15__["ɵɵsetNgModuleScope"](CoreModule, { declarations: [_header_header_component__WEBPACK_IMPORTED_MODULE_1__["HeaderComponent"],
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_16__["ɵɵsetNgModuleScope"](CoreModule, { declarations: [_header_header_component__WEBPACK_IMPORTED_MODULE_1__["HeaderComponent"],
         _browse_browse_component__WEBPACK_IMPORTED_MODULE_2__["BrowseComponent"],
         _side_nav_side_nav_component__WEBPACK_IMPORTED_MODULE_4__["SideNavComponent"],
         _home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"],
@@ -2782,6 +2790,7 @@ CoreModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_15__["ɵɵdefineInject
         _material_material_module__WEBPACK_IMPORTED_MODULE_3__["MaterialModule"],
         _user_user_routing_module__WEBPACK_IMPORTED_MODULE_5__["UserRoutingModule"],
         _movie_movie_routing_module__WEBPACK_IMPORTED_MODULE_11__["MovieRoutingModule"],
+        _app_routing_module__WEBPACK_IMPORTED_MODULE_15__["AppRoutingModule"],
         _shared_shared_module__WEBPACK_IMPORTED_MODULE_6__["SharedModule"],
         _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_8__["NgbModule"]], exports: [_header_header_component__WEBPACK_IMPORTED_MODULE_1__["HeaderComponent"],
         _side_nav_side_nav_component__WEBPACK_IMPORTED_MODULE_4__["SideNavComponent"],
@@ -2888,6 +2897,10 @@ const routes = [
     },
     {
         path: "**",
+        redirectTo: "/404"
+    },
+    {
+        path: "404",
         component: _core_not_found_not_found_component__WEBPACK_IMPORTED_MODULE_4__["NotFoundComponent"]
     }
 ];

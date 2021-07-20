@@ -14,6 +14,7 @@ import { MovieRoutingModule } from '../movie/movie-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { OwnerGuard } from './owner.guard';
 import { AuthGuard } from './auth.guard';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { AuthGuard } from './auth.guard';
     MaterialModule,
     UserRoutingModule,
     MovieRoutingModule,
+    AppRoutingModule,
     SharedModule,
     NgbModule
   ],
