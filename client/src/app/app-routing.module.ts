@@ -28,11 +28,11 @@ const routes: Routes = [
     path: "movies",
     loadChildren: () => import("./movie/movie.module").then(m=> m.MovieModule)
   },
+    //>>>>-- Оправих се, мерси за отделеното време :) --<<<<
   {
     path: "**",
     redirectTo: "/404"
   },
-  //>>>>-- Оправих се, мерси за отделеното време :) --<<<<
   {
     path: "404",
     component: NotFoundComponent

@@ -2895,11 +2895,11 @@ const routes = [
         path: "movies",
         loadChildren: () => __webpack_require__.e(/*! import() | movie-movie-module */ "movie-movie-module").then(__webpack_require__.bind(null, /*! ./movie/movie.module */ "ubTF")).then(m => m.MovieModule)
     },
+    //>>>>-- Оправих се, мерси за отделеното време :) --<<<<
     {
         path: "**",
         redirectTo: "/404"
     },
-    //>>>>-- Оправих се, мерси за отделеното време :) --<<<<
     {
         path: "404",
         component: _core_not_found_not_found_component__WEBPACK_IMPORTED_MODULE_4__["NotFoundComponent"]
