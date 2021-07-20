@@ -12,6 +12,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../services/user.service';
 import { AlertService } from '../services/alert.service';
 import { MovieRoutingModule } from '../movie/movie-routing.module';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { MovieRoutingModule } from '../movie/movie-routing.module';
     BrowseComponent,
     SideNavComponent,
     HomeComponent,
+    NotFoundComponent,
   ],
   imports: [
     CommonModule,
@@ -32,6 +34,7 @@ import { MovieRoutingModule } from '../movie/movie-routing.module';
   exports: [
     HeaderComponent,
     SideNavComponent,
+    NotFoundComponent
   ],
   providers: [UserService, AlertService]
 })
