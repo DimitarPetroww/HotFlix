@@ -2899,6 +2899,7 @@ const routes = [
         path: "**",
         redirectTo: "/404"
     },
+    //>>>>-- Оправих се, мерси за отделеното време :) --<<<<
     {
         path: "404",
         component: _core_not_found_not_found_component__WEBPACK_IMPORTED_MODULE_4__["NotFoundComponent"]
