@@ -28,6 +28,10 @@ const routes: Routes = [
     path: "movies",
     loadChildren: () => import("./movie/movie.module").then(m=> m.MovieModule)
   },
+  {
+    path: "**",
+    component: NotFoundComponent
+  }
 ];
 
 @NgModule({

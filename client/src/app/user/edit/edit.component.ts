@@ -31,6 +31,7 @@ export class EditComponent implements OnInit {
   }
   submitHandler(fV) {
     this.isLoading = true
+    Object.assign(fV, { _id: this.user._id })
     this.userService.editUser(fV).subscribe(
       x => {
         this.isLoading = false

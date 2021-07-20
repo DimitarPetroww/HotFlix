@@ -72,7 +72,7 @@ router.get("/profile", isAuthenticated(), async (req, res) => {
     res.json(user)
 })
 router.post("/edit", isAuthenticated(), async (req, res) => {
-    const [user, error] = await promise(userService.findUserByEmail(req.body.email))
+    const [user, error] = await promise(userService.getUser(req.body._id))
     if (error) {
         res.status(400)
         return res.json({ message: error.message })

@@ -538,6 +538,7 @@ class EditComponent {
     }
     submitHandler(fV) {
         this.isLoading = true;
+        Object.assign(fV, { _id: this.user._id });
         this.userService.editUser(fV).subscribe(x => {
             this.isLoading = false;
             this.router.navigate(["/user/profile"]);
@@ -2743,16 +2744,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _browse_browse_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./browse/browse.component */ "1Bbi");
 /* harmony import */ var _material_material_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../material/material.module */ "hctd");
 /* harmony import */ var _side_nav_side_nav_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./side-nav/side-nav.component */ "LjNy");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "tyNb");
-/* harmony import */ var _user_user_routing_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../user/user-routing.module */ "Yu5h");
-/* harmony import */ var _shared_shared_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../shared/shared.module */ "PCNd");
-/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./home/home.component */ "3GR4");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "1kSV");
-/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../services/user.service */ "qfBg");
-/* harmony import */ var _services_alert_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../services/alert.service */ "3LUQ");
-/* harmony import */ var _movie_movie_routing_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../movie/movie-routing.module */ "QmcW");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/core */ "fXoL");
-
+/* harmony import */ var _user_user_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../user/user-routing.module */ "Yu5h");
+/* harmony import */ var _shared_shared_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../shared/shared.module */ "PCNd");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./home/home.component */ "3GR4");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "1kSV");
+/* harmony import */ var _services_user_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../services/user.service */ "qfBg");
+/* harmony import */ var _services_alert_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../services/alert.service */ "3LUQ");
+/* harmony import */ var _movie_movie_routing_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../movie/movie-routing.module */ "QmcW");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/core */ "fXoL");
 
 
 
@@ -2769,26 +2768,24 @@ __webpack_require__.r(__webpack_exports__);
 class CoreModule {
 }
 CoreModule.ɵfac = function CoreModule_Factory(t) { return new (t || CoreModule)(); };
-CoreModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵdefineNgModule"]({ type: CoreModule });
-CoreModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵdefineInjector"]({ providers: [_services_user_service__WEBPACK_IMPORTED_MODULE_10__["UserService"], _services_alert_service__WEBPACK_IMPORTED_MODULE_11__["AlertService"]], imports: [[
+CoreModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_12__["ɵɵdefineNgModule"]({ type: CoreModule });
+CoreModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_12__["ɵɵdefineInjector"]({ providers: [_services_user_service__WEBPACK_IMPORTED_MODULE_9__["UserService"], _services_alert_service__WEBPACK_IMPORTED_MODULE_10__["AlertService"]], imports: [[
             _angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"],
             _material_material_module__WEBPACK_IMPORTED_MODULE_3__["MaterialModule"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"],
-            _user_user_routing_module__WEBPACK_IMPORTED_MODULE_6__["UserRoutingModule"],
-            _movie_movie_routing_module__WEBPACK_IMPORTED_MODULE_12__["MovieRoutingModule"],
-            _shared_shared_module__WEBPACK_IMPORTED_MODULE_7__["SharedModule"],
-            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_9__["NgbModule"]
+            _user_user_routing_module__WEBPACK_IMPORTED_MODULE_5__["UserRoutingModule"],
+            _movie_movie_routing_module__WEBPACK_IMPORTED_MODULE_11__["MovieRoutingModule"],
+            _shared_shared_module__WEBPACK_IMPORTED_MODULE_6__["SharedModule"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_8__["NgbModule"]
         ]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_13__["ɵɵsetNgModuleScope"](CoreModule, { declarations: [_header_header_component__WEBPACK_IMPORTED_MODULE_1__["HeaderComponent"],
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_12__["ɵɵsetNgModuleScope"](CoreModule, { declarations: [_header_header_component__WEBPACK_IMPORTED_MODULE_1__["HeaderComponent"],
         _browse_browse_component__WEBPACK_IMPORTED_MODULE_2__["BrowseComponent"],
         _side_nav_side_nav_component__WEBPACK_IMPORTED_MODULE_4__["SideNavComponent"],
-        _home_home_component__WEBPACK_IMPORTED_MODULE_8__["HomeComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"],
+        _home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"]], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["CommonModule"],
         _material_material_module__WEBPACK_IMPORTED_MODULE_3__["MaterialModule"],
-        _angular_router__WEBPACK_IMPORTED_MODULE_5__["RouterModule"],
-        _user_user_routing_module__WEBPACK_IMPORTED_MODULE_6__["UserRoutingModule"],
-        _movie_movie_routing_module__WEBPACK_IMPORTED_MODULE_12__["MovieRoutingModule"],
-        _shared_shared_module__WEBPACK_IMPORTED_MODULE_7__["SharedModule"],
-        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_9__["NgbModule"]], exports: [_header_header_component__WEBPACK_IMPORTED_MODULE_1__["HeaderComponent"],
+        _user_user_routing_module__WEBPACK_IMPORTED_MODULE_5__["UserRoutingModule"],
+        _movie_movie_routing_module__WEBPACK_IMPORTED_MODULE_11__["MovieRoutingModule"],
+        _shared_shared_module__WEBPACK_IMPORTED_MODULE_6__["SharedModule"],
+        _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_8__["NgbModule"]], exports: [_header_header_component__WEBPACK_IMPORTED_MODULE_1__["HeaderComponent"],
         _side_nav_side_nav_component__WEBPACK_IMPORTED_MODULE_4__["SideNavComponent"]] }); })();
 
 
@@ -2891,12 +2888,8 @@ const routes = [
         loadChildren: () => __webpack_require__.e(/*! import() | movie-movie-module */ "movie-movie-module").then(__webpack_require__.bind(null, /*! ./movie/movie.module */ "ubTF")).then(m => m.MovieModule)
     },
     {
-        path: "404",
-        component: _shared_not_found_not_found_component__WEBPACK_IMPORTED_MODULE_4__["NotFoundComponent"]
-    },
-    {
         path: "**",
-        redirectTo: "404"
+        component: _shared_not_found_not_found_component__WEBPACK_IMPORTED_MODULE_4__["NotFoundComponent"]
     }
 ];
 class AppRoutingModule {

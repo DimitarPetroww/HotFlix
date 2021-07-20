@@ -24,7 +24,6 @@ import { MovieRoutingModule } from '../movie/movie-routing.module';
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule,
     UserRoutingModule,
     MovieRoutingModule,
     SharedModule,
