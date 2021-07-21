@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\pc\Desktop\SoftUni\asd\client\src\polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! C:\Users\pc\Desktop\HotFlix git\HotFlix\client\src\polyfills.ts */"hN/g");
 
 
 /***/ }),
