@@ -1,31 +1,7 @@
-<ngb-carousel class="carousel-container">
-    <ng-template ngbSlide>
-        <div class="carousel-item active"
-            style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1485846234645-a62644f84728?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=740&q=80')">
-            <div class="container">
-                <h1>Watch movies</h1>
-                <p>Check what movies we have after signing up</p>
-            </div>
-        </div>
-    </ng-template>
-    <ng-template ngbSlide>
-        <div class="carousel-item active"
-            style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://images.unsplash.com/photo-1594908900066-3f47337549d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80)">
-            <div class="container">
-                <h1>Do you already have an account?</h1>
-                <p>Sign in right now and have fun</p>
-                <a routerLink="/user/login" class="btn btn-lg btn-primary">Sign up</a>
-            </div>
-        </div>
-    </ng-template>
-    <ng-template ngbSlide>
-        <div class="carousel-item active"
-            style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(https://images.unsplash.com/photo-1586899028174-e7098604235b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=751&q=80)">
-            <div class="container">
-                <h1>If you dont have an account? Please, Sign Up</h1>
-                <p>Sign up and have fun</p>
-                <a routerLink="/user/register" class="btn btn-lg btn-primary">Sign in</a>
-            </div>
-        </div>
-    </ng-template>
-</ngb-carousel>
+<div class="heading">
+    <h1 class="head">Welcome to <span>HotFlix</span></h1>
+    <div class="btns">
+        <a routerLink="/user/login">Login</a>
+        <a routerLink="/user/register">Register</a>
+    </div>	
+</div>
