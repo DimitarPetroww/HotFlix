@@ -2781,21 +2781,21 @@ class UserService {
         this.http = http;
     }
     get isLogged() {
-        return !!sessionStorage.getItem("isLogged");
+        return !!localStorage.getItem("isLogged");
     }
     register(body) {
         return this.http.post(`/api/user/register`, body, { withCredentials: true }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_0__["tap"])((x) => {
-            sessionStorage.setItem("isLogged", "true");
+            localStorage.setItem("isLogged", "true");
         }));
     }
     login(body) {
         return this.http.post(`/api/user/login`, body, { withCredentials: true }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_0__["tap"])((x) => {
-            sessionStorage.setItem("isLogged", "true");
+            localStorage.setItem("isLogged", "true");
         }));
     }
     logout() {
         return this.http.post(`/api/user/logout`, {}, { withCredentials: true }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_0__["tap"])(() => {
-            sessionStorage.removeItem("isLogged");
+            localStorage.removeItem("isLogged");
         }));
     }
     getUser() {
