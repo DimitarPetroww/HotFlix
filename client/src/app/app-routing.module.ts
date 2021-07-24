@@ -11,13 +11,19 @@ const routes: Routes = [
     path: "",
     pathMatch: "full",
     component: HomeComponent,
+    canActivate: [AuthGuard],
+    data: {
+      isLogged: false,
+      redirectUrl: "/browse"
+    }
   },
   {
     path: "browse",
     component: BrowseComponent,
     canActivate: [AuthGuard],
     data: {
-      isLogged: true
+      isLogged: true,
+      redirectUrl: "/user/login"
     }
   },
   {
@@ -28,7 +34,6 @@ const routes: Routes = [
     path: "movies",
     loadChildren: () => import("./movie/movie.module").then(m=> m.MovieModule)
   },
-    //>>>>-- Оправих се, мерси за отделеното време :) --<<<<
   {
     path: "**",
     redirectTo: "/404"

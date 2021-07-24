@@ -9,9 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SideNavComponent implements OnInit {
   @Output() sidenavClose = new EventEmitter();
-  get isLogged(): boolean {
-    return this.userService.isLogged
-  }
+  isLogged$ = this.userService.isLogged$ 
 
   constructor(private userService: UserService, private router: Router) { }
 

@@ -5,22 +5,22 @@
         </button>
     </div>
     <div fxFlex fxLayout fxLayoutAlign="start" fxHide.xs>
-        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="!isLogged">HOME</a>
-        <a routerLink="/browse" routerLinkActive="active" *ngIf="isLogged">BROWSE</a>
-        <a routerLink="/movies/create" routerLinkActive="active" *ngIf="isLogged">CREATE</a>
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" *ngIf="!(isLogged$ | async)">HOME</a>
+        <a routerLink="/browse" routerLinkActive="active" *ngIf="(isLogged$ | async)">BROWSE</a>
+        <a routerLink="/movies/create" routerLinkActive="active" *ngIf="(isLogged$ | async)">CREATE</a>
     </div>
     <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
         <ul fxLayout fxLayoutGap="15px" class="navigation-items">
-            <li *ngIf="isLogged">
+            <li *ngIf="(isLogged$ | async)">
                 <a routerLink="/user/profile" routerLinkActive="active">PROFILE</a>
             </li>
-            <li *ngIf="isLogged">
+            <li *ngIf="(isLogged$ | async)">
                 <a (click)="logout($event)">SIGN OUT</a>
             </li>
-            <li *ngIf="!isLogged">
+            <li *ngIf="!(isLogged$ | async)">
                 <a routerLink="/user/login" routerLinkActive="active">LOGIN</a>
             </li>
-            <li *ngIf="!isLogged">
+            <li *ngIf="!(isLogged$ | async)">
                 <a routerLink="/user/register" routerLinkActive="active">REGISTER</a>
             </li>
         </ul>

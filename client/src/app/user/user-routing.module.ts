@@ -17,7 +17,8 @@ const routes: Routes = [
         component: LoginComponent,
         canActivate: [AuthGuard],
         data: {
-            isLogged: false
+            isLogged: false,
+            redirectUrl: "/browse"
         }
     },
     {
@@ -25,7 +26,8 @@ const routes: Routes = [
         component: RegisterComponent,
         canActivate: [AuthGuard],
         data: {
-            isLogged: false
+            isLogged: false,
+            redirectUrl: "/browse"
         }
     },
     {
@@ -33,7 +35,8 @@ const routes: Routes = [
         component: ProfileComponent,
         canActivate: [AuthGuard],
         data: {
-            isLogged: true
+            isLogged: true,
+            redirectUrl: "/user/login"
         }
     },
     {
@@ -41,7 +44,8 @@ const routes: Routes = [
         component: EditComponent,
         canActivate: [AuthGuard],
         data: {
-            isLogged: true
+            isLogged: true,
+            redirectUrl: "/user/login"
         }
     }
 ];

@@ -9,14 +9,12 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class HeaderComponent implements OnInit {
   @Output() public sidenavToggle = new EventEmitter();
-
-  get isLogged(): boolean {
-    return this.userService.isLogged
-  }
+  isLogged$ = this.userService.isLogged$ 
 
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
+
   }
   onToggleSidenav = () => {
     this.sidenavToggle.emit();

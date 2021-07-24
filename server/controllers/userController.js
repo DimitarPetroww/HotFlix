@@ -30,7 +30,7 @@ router.post("/register", async (req, res) => {
         return res.json({ message: "Email is already taken" })
     }
     const token = jwt.sign({ email: user.email, _id: user._id, username: user.username }, config.TOKEN_SECRET)
-    res.cookie(config.COOKIE_NAME, token, { httpOnly: true, maxAge: 900000})
+    res.cookie(config.COOKIE_NAME, token, { httpOnly: true, maxAge: 900000 })
 
     res.json(user)
 })
@@ -58,6 +58,12 @@ router.post("/login", async (req, res) => {
 
     res.json(user)
 })
+router.get("/isAuth", async (req, res) => {
+    if (req.user) {
+        return res.json(req.user)
+    }
+    res.json(undefined)
+})
 router.post("/logout", isAuthenticated(), async (req, res) => {
     res.clearCookie(config.COOKIE_NAME)
 
@@ -83,7 +89,7 @@ router.post("/edit", isAuthenticated(), async (req, res) => {
         return res.json({ message: "Incorrect Password" })
     }
     const [newUser, err] = await promise(userService.editUser(user._id, req.body.email, req.body.username))
-    if(err) {
+    if (err) {
         res.status(400)
         return res.json({ message: err.message })
     }
