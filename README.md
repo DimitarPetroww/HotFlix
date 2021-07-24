@@ -1,2 +1,1 @@
-# HotFlix
-### https://hot-flix.herokuapp.com
+# HotFlix - https://hot-flix.herokuapp.com
