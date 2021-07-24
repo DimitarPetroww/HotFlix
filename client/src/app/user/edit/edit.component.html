@@ -22,7 +22,7 @@
             Confirm Password is required
         </p>
         <i class="fas fa-lock"></i>
-        <input type="text" placeholder="Confirm Password" name="confirmPassword" ngModel #password="ngModel" required [class.input-error]="password.touched && password.errors">
+        <input type="password" placeholder="Confirm Password" name="confirmPassword" ngModel #password="ngModel" required [class.input-error]="password.touched && password.errors">
     </div>
     <input type="submit" class="btn" value="Edit" [disabled]="f.invalid">
 </form>
