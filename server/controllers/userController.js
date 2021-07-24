@@ -30,7 +30,7 @@ router.post("/register", async (req, res) => {
         return res.json({ message: "Email is already taken" })
     }
     const token = jwt.sign({ email: user.email, _id: user._id, username: user.username }, config.TOKEN_SECRET)
-    res.cookie(config.COOKIE_NAME, token, { httpOnly: true, maxAge: 900000 })
+    res.cookie(config.COOKIE_NAME, token, { httpOnly: true })
 
     res.json(user)
 })
@@ -54,7 +54,7 @@ router.post("/login", async (req, res) => {
         return res.json({ message: "Wrong email or password" })
     }
     const token = jwt.sign({ email: user.email, _id: user._id, username: user.username }, config.TOKEN_SECRET)
-    res.cookie(config.COOKIE_NAME, token, { httpOnly: true, maxAge: 900000 })
+    res.cookie(config.COOKIE_NAME, token, { httpOnly: true })
 
     res.json(user)
 })
