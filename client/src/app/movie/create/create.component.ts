@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { IMovie } from 'src/app/interfaces/movie';
 import { MovieService } from 'src/app/services/movie.service';
 import { UploadService } from 'src/app/services/upload.service';
-import { timer } from "rxjs"
 import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
