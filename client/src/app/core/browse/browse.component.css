@@ -41,10 +41,10 @@ mat-toolbar {
 .active {
   color: #E50914 !important;
 }
-[data-pagination],
-[data-pagination] *,
-[data-pagination] *:before,
-[data-pagination] *:after {
+.pagination-nav,
+.pagination-nav *,
+.pagination-nav *:before,
+.pagination-nav *:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -53,69 +53,69 @@ mat-toolbar {
   -moz-osx-font-smoothing: grayscale;
   font-kerning: auto;
 }
-[data-pagination] {
+.pagination-nav {
   font-size: 8pt;
   line-height: 1;
   font-weight: 400;
   font-family: 'Open Sans', 'Source Sans Pro', Roboto, 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', 'Myriad Pro', 'Segoe UI', Myriad, Helvetica, 'Lucida Grande', 'DejaVu Sans Condensed', 'Liberation Sans', 'Nimbus Sans L', Tahoma, Geneva, Arial, sans-serif;
   -webkit-text-size-adjust: 100%;
-  margin: 1em auto;
+  margin: 0 auto;
   text-align: center;
   transition: font-size .2s ease-in-out;
 }
-[data-pagination] ul {
+.pagination-nav ul {
   list-style-type: none;
   display: inline;
   font-size: 100%;
   margin: 0;
   padding: .5em;
 }
-[data-pagination] ul li {
+.pagination-nav ul li {
   display: inline-block;
   font-size: 100%;
   width: auto;
   border-radius: 3px;
 }
-[data-pagination] > a {
+.pagination-nav > a {
   font-size: 140%;
 }
-[data-pagination] a {
+.pagination-nav a {
   color: white;
   font-size: 100%;
   padding: .5em;
 }
-[data-pagination] a:focus,
-[data-pagination] a:hover {
+.pagination-nav a:focus,
+.pagination-nav a:hover {
   color: #E50914;
   text-decoration: none;
 }
-[data-pagination] li.current > a {
+.pagination-nav li.current > a {
   color: white;
 }
 /* Disabled & Hidden Styles */
-[data-pagination] .disabled,
-[data-pagination] [hidden],
-[data-pagination] [disabled] {
+.pagination-nav .disabled,
+.pagination-nav [hidden],
+.pagination-nav [disabled] {
   opacity: .5;
   pointer-events: none;
 }
 @media (min-width: 350px) {
-  [data-pagination] {
+  .pagination-nav {
     font-size: 10pt;
   }
 }
 @media (min-width: 500px) {
-  [data-pagination] {
+  .pagination-nav {
     font-size: 12pt;
   }
 }
 @media (min-width: 700px) {
-  [data-pagination] {
+  .pagination-nav {
     font-size: 14pt;
   }
 }
 @media (min-width: 900px) {
-  [data-pagination] {
+  .pagination-nav {
     font-size: 16pt;
   }
 }

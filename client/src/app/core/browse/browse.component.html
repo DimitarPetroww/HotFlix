@@ -20,7 +20,7 @@
         </div>
     </div>
 </div>
-<nav data-pagination *ngIf="pages && page && pages.length > 1">
+<nav class="pagination-nav" *ngIf="pages && page && pages.length > 1">
     <a routerLink="/browse" [queryParams]="{'page': this.page - 1}" *ngIf="this.page - 1 > 0"><i
             class="fas fa-backward"></i></a>
     <ul>
