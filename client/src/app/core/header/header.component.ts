@@ -7,15 +7,12 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   @Output() public sidenavToggle = new EventEmitter();
   isLogged$ = this.userService.isLogged$ 
 
   constructor(private userService: UserService, private router: Router) { }
 
-  ngOnInit(): void {
-
-  }
   onToggleSidenav = () => {
     this.sidenavToggle.emit();
   }

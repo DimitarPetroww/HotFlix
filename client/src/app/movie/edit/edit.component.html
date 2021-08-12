@@ -1,6 +1,6 @@
 <app-alert [message]="error" *ngIf="error"></app-alert>
 <app-spinner *ngIf="isLoading"></app-spinner>
-<div class="container create-trip" *ngIf="data">
+<div class="container create-movie" *ngIf="data">
     <h1>Edit movie</h1>
     <div>
         <form #f="ngForm" (ngSubmit)="submitHandler(f.value)">

@@ -11,7 +11,7 @@ import { ConfirmedValidator } from '../../shared/validators';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 
   form: FormGroup
   isLoading: boolean = false
@@ -28,9 +28,7 @@ export class RegisterComponent implements OnInit {
       repeatPassword: ["", [Validators.required]]
     }, { validators: [ConfirmedValidator("password", "repeatPassword")] })
   }
-  ngOnInit() {
 
-  }
   submitHandler(): void {
     this.isLoading = true
     this.userService.register(this.form.value).subscribe(

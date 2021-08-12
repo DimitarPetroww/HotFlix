@@ -10,7 +10,7 @@ import { AlertService } from 'src/app/services/alert.service';
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
-export class CreateComponent implements OnInit {
+export class CreateComponent {
   isLoading: Boolean = false
   imgNameAndSize: string = "Choose Movie Image"
   trailerNameAndSize: string = "Choose Movie Trailer under 100MB"
@@ -25,8 +25,6 @@ export class CreateComponent implements OnInit {
 
   constructor(private movieService: MovieService, private uploadService: UploadService, private router: Router, private alertService: AlertService) { }
 
-  ngOnInit(): void {
-  }
   submitHandler(fV: IMovie): void {
     const data = {
       author: fV.author,

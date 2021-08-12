@@ -30,7 +30,7 @@ export class DetailsComponent implements OnInit {
     this.userService.getUser().pipe(switchMap((x: IUser) => {
       this.user = x
       return this.route.params
-    })).pipe(switchMap(params => {
+    }), switchMap(params => {
       this.movieId = params.id
       return this.movieService.loadMovieById(this.movieId)
     })).subscribe(movie => {

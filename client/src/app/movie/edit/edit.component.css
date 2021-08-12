@@ -36,7 +36,7 @@ h1 {
   transition: transform .2s ease-out;
   margin: 0 auto;
 }
-.create-trip textarea.form-control {
+.create-movie textarea.form-control {
   width: 100%;
   height: 90px;
 }
@@ -135,17 +135,17 @@ p.error {
   width: 100%;
 }
 @media(max-width: 360px) {
-   .create-trip{
+   .create-movie{
     padding-top: 90px;
   }
 }
 @media(max-width: 540px) {
-  .create-trip{
+  .create-movie{
    padding-top: 95px;
  }
 }
 @media(max-width: 1024px) {
-  .create-trip{
+  .create-movie{
    padding-top: 110px;
  }
 }
