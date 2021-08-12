@@ -3,7 +3,7 @@
 
 # Technology Stack
 
-![MEAN stack](https://res.cloudinary.com/douwa5b0u/image/upload/v1627148638/HotFlix/Mean_Tech_stack_hchjvr.png)
+![MEAN stack](https://www.netsolutions.com/insights/wp-content/uploads/2019/02/how-MEAN-STACK-TECHNOLOGY-WORKS.jpg)
 
 - MEAN (MongoDB, Express.js, Angular, and Node.js) Solution stack;
 - [Cloudinary](https://cloudinary.com/) as a file storage cloud API;
