@@ -1,4 +1,4 @@
-# HotFlix - https://hot-flix.herokuapp.com
+# HotFlix
 ![Preview](https://res.cloudinary.com/douwa5b0u/image/upload/v1627147854/HotFlix/NfAjvb8_-_Imgur_cgsj3g.png)
 
 # Technology Stack
