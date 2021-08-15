@@ -39,7 +39,6 @@ export class DetailsComponent implements OnInit {
       this.isLiked = this.movie.likes.some(x => x == this.user._id)
       this.assignComments(movie.comments)
     }, this.errorHandler)
-
   }
   likeMovie() {
     this.isLoading = true

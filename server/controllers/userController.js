@@ -60,7 +60,8 @@ router.post("/login", async (req, res) => {
 })
 router.get("/isAuth", async (req, res) => {
     if (req.user) {
-        return res.json(req.user)
+        const [user, _] = await promise(userService.getUser(req.user._id))
+        return res.json(user)
     }
     res.json(undefined)
 })

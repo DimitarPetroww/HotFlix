@@ -22,7 +22,7 @@ export class OwnerGuard implements CanActivate {
           this.router.navigateByUrl("/user/login")
           return false
         }
-        if (user.ownedMovies.every(user => user._id != id)) {
+        if (user.ownedMovies.every(movie => id != movie._id)) {
           this.router.navigateByUrl("/browse")
           return false
         }
